@@ -1,0 +1,62 @@
+<p class="h3 text-center font-weight-bold m-5">My Books</p>
+
+<div class="container-fluid">
+    <div class="search-container ml-5">
+        <mat-form-field appearence="fill">
+            <input matInput placeholder="Search book..." autocomplete="off" (keyup)="filterData($event)">
+        </mat-form-field>
+    </div>
+    <div class="mat-elevation-z8">
+        <table mat-table matSort [dataSource]="StudentBooks">
+
+            <ng-container matColumnDef="t_id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> T. ID </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.t_id}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="b_name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Book Name </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.b_name}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="b_author">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.b_author}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date_of_submission">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Submission Date </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.date_of_submission | date:'short'}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element">
+                    <button class="btn btn-outline-primary btn-sm" (click)="returnBook(element)">
+                        Return Book
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="stBooks"></tr>
+            <tr mat-row *matRowDef="let row; columns: stBooks;"></tr>
+        </table>
+        <table>
+            <tr *ngIf="isEmpty">
+                <td style="text-align: center;">
+                    No books are issued on your account!
+                </td>
+            </tr>
+        </table>
+        <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50]" aria-label="Select page">
+        </mat-paginator>
+    </div>
+</div>

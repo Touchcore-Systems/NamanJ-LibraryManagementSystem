@@ -1,0 +1,16 @@
+<div>
+    <div class="form-group">
+        <label>Book Name</label>
+        <input type="text" class="form-control" [(ngModel)]="BookName" placeholder="Enter Book Name">
+    </div>
+    <div class="form-group">
+        <label>Book Author</label>
+        <input type="text" class="form-control" [(ngModel)]="BookAuthor" placeholder="Enter Book Author">
+    </div>
+    <div class="form-group">
+        <label>Book Quantity</label>
+        <input type="text" class="form-control" [(ngModel)]="BookQuantity" placeholder="Enter Book Quantity">
+    </div>
+    <button (click)="addBook()" *ngIf="book.b_id==0" class="btn btn-primary">Add</button>
+    <button (click)="updateBook()" *ngIf="book.b_id!=0" class="btn btn-primary"> Update</button>
+</div>
