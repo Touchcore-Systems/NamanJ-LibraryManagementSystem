@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
+import { NgForm, Validators, FormBuilder } from '@angular/forms';
 import { SharedService } from '../shared.service';
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   invalidLogin: boolean = false;
   diffPass: boolean = false;
 
-  constructor(private router: Router, private http: HttpClient, private service: SharedService) { }
+  constructor(private router: Router, private service: SharedService) { }
 
 
   ngOnInit(): void { }
@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
       'u_role': form.value.role
     }
 
-    this.http.post("https://localhost:7248/api/auth/login", credentials).subscribe(
-      response => {
-        const token = (<any>response).Token;
+    this.service.loginUser(credentials).subscribe(
+      res => {
+        const token = (<any>res).Token;
         localStorage.setItem("lms_authenticate", token); // session storage can also be used
         this.invalidLogin = false;
         if (credentials.u_role == "admin") {
@@ -34,8 +34,10 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigate(["/student/available-books"]);
         }
+        this.service.SnackBarMessage("Login Successful!", "Dismiss");
       }, err => {
         this.invalidLogin = true;
+        this.service.SnackBarMessage(err.error.title, "Dismiss");
       }
     )
   }

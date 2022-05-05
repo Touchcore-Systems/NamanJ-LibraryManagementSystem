@@ -35,6 +35,10 @@ export class SharedService {
     return this.http.post(this.APIUrl + '/Issue', val);
   }
 
+  loginUser(val: any){
+    return this.http.post(this.APIUrl + '/Auth/login', val);
+  }
+
   registerUser(val: any){
     return this.http.post(this.APIUrl + '/Register', val);
   }

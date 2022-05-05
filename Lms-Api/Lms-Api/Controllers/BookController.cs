@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using LibraryManagementSystemAPI.Models;
+using Lms_Api.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -45,33 +46,41 @@ namespace LibraryManagementSystemAPI.Controllers
         }
 
         [HttpPost, Authorize(Roles = "admin")]
-        public JsonResult Post(BookModel book)
+        public JsonResult Post(BookDTO book)
         {
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             SqlDataReader myReader;
+            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCo");
+            string res = "";
 
-            using (SqlConnection myConn = new SqlConnection(sqlDataSource))
+            SqlConnection myConn = new SqlConnection(sqlDataSource);
+            SqlCommand cmd = new SqlCommand("AddBook", myConn);
+            try
             {
                 myConn.Open();
 
-                using (SqlCommand cmd = new SqlCommand("AddBook", myConn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", book.b_name);
-                    cmd.Parameters.AddWithValue("@Author", book.b_author);
-                    cmd.Parameters.AddWithValue("@Quantity", book.b_quantity);
+                cmd.Parameters.AddWithValue("@Name", book.b_name);
+                cmd.Parameters.AddWithValue("@Author", book.b_author);
+                cmd.Parameters.AddWithValue("@Quantity", book.b_quantity);
 
-                    cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                    myReader = cmd.ExecuteReader();
-                    table.Load(myReader);
+                myReader = cmd.ExecuteReader();
+                table.Load(myReader);
+                myReader.Close();
 
-                    myReader.Close();
-                    myConn.Close();
-                }
+                res = "Added Successfully!";
+            }
+            catch (Exception e)
+            {
+                res = e.Message.ToString();
+            }
+            finally
+            {
+                myConn.Close();
             }
 
-            return new JsonResult("Added Successfully");
+            return new JsonResult(res);
         }
 
         [HttpPut, Authorize(Roles = "admin, student")]

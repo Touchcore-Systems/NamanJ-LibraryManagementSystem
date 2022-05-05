@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using Lms_Api.DTO;
 using LmsAuthentication.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,42 +19,42 @@ namespace LmsAuthentication.Controllers
         }
 
         [HttpPost]
-        public JsonResult Post(RegisterModel reg)
+        public JsonResult Post(RegisterDTO reg)
         {
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             SqlDataReader myReader;
+            string res = "";
 
-            using (SqlConnection myConn = new SqlConnection(sqlDataSource))
+            SqlConnection myConn = new SqlConnection(sqlDataSource);
+
+            try
             {
                 myConn.Open();
 
-                using (SqlCommand cmd = new SqlCommand("RegisterStudent", myConn))
-                {
-                    try
-                    {
-                        cmd.Parameters.AddWithValue("@Username", reg.u_name);
-                        cmd.Parameters.AddWithValue("@Password", LmsApi.HashPass.hashPass(reg.u_pass));
-                        cmd.Parameters.AddWithValue("@Role", reg.u_role);
+                SqlCommand cmd = new SqlCommand("RegisterStudent", myConn);
 
-                        cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Username", reg.u_name);
+                cmd.Parameters.AddWithValue("@Password", LmsApi.HashPass.hashPass(reg.u_pass));
+                cmd.Parameters.AddWithValue("@Role", reg.u_role);
 
-                        myReader = cmd.ExecuteReader();
-                        table.Load(myReader);
-                        myReader.Close();
-                        throw new Exception("hello");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Exception: ", ex);
-                    }
-                    finally
-                    {
-                        myConn.Close();
-                    }
-                }
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                myReader = cmd.ExecuteReader();
+                table.Load(myReader);
+                myReader.Close();
+
+                res = "Registered Successfully!";
             }
-            return new JsonResult("Registered Successfully");
+            catch (Exception e)
+            {
+                res = e.Message.ToString();
+            }
+            finally
+            {
+                myConn.Close();
+            }
+            return new JsonResult(res);
         }
     }
 }
