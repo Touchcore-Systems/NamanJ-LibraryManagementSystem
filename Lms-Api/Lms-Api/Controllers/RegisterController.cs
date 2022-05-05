@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using Lms_Api.DTO;
-using LmsAuthentication.Models;
+using Lms_Api.LogRecord;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LmsAuthentication.Controllers
@@ -21,6 +21,8 @@ namespace LmsAuthentication.Controllers
         [HttpPost]
         public JsonResult Post(RegisterDTO reg)
         {
+            LogRecord record = new LogRecord();
+
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             SqlDataReader myReader;
@@ -44,15 +46,16 @@ namespace LmsAuthentication.Controllers
                 table.Load(myReader);
                 myReader.Close();
 
-                res = "Registered Successfully!";
+                res = "User "+reg.u_name+" registered successfully";
             }
             catch (Exception e)
             {
-                res = e.Message.ToString();
+                res = e.Message;
             }
             finally
             {
                 myConn.Close();
+                record.LogWrite(res);
             }
             return new JsonResult(res);
         }

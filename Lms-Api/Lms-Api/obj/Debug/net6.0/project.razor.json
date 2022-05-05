@@ -1,5 +1,5 @@
 {
-  "FilePath": "d:\\Touchcore Systems Pvt Ltd\\Dumy Project\\LmsAuthentication\\LmsAuthentication\\LmsAuthentication.csproj",
+  "FilePath": "c:\\Users\\ASUS\\Desktop\\TouchcoreSystems\\LmsApp\\Lms-Api\\Lms-Api\\Lms-Api.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16295,7 +16295,7 @@
     ],
     "CSharpLanguageVersion": 1000
   },
-  "RootNamespace": "LmsAuthentication",
+  "RootNamespace": "Lms_Api",
   "Documents": [],
   "SerializationFormat": "0.2"
 }

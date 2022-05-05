@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using Lms_Api.LogRecord;
 using LmsAuthentication.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,28 +22,38 @@ namespace LmsAuthentication.Controllers
         [HttpGet, Authorize(Roles = "admin, student")]
         public JsonResult Get()
         {
-            string u_name = User.Identity.Name;
-
+            LogRecord record = new LogRecord();
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             SqlDataReader myReader;
 
-            using (SqlConnection myConn = new SqlConnection(sqlDataSource))
+            string u_name = User.Identity.Name;
+            string res = string.Empty;
+            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
+
+            SqlConnection myConn = new SqlConnection(sqlDataSource);
+            SqlCommand cmd = new SqlCommand("GetSubmissionDetails", myConn);
+
+            try
             {
-                myConn.Open();
+                cmd.Parameters.AddWithValue("@Username", u_name);
 
-                using (SqlCommand cmd = new SqlCommand("GetSubmissionDetails", myConn))
-                {
-                    cmd.Parameters.AddWithValue("@Username", u_name);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.CommandType = CommandType.StoredProcedure;
+                myReader = cmd.ExecuteReader();
+                table.Load(myReader);
 
-                    myReader = cmd.ExecuteReader();
-                    table.Load(myReader);
+                myReader.Close();
 
-                    myReader.Close();
-                    myConn.Close();
-                }
+                res = "Books issued by user " + u_name + " fetched";
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                myConn.Close();
+                record.LogWrite(res);
             }
             return new JsonResult(table);
         }
@@ -50,32 +61,44 @@ namespace LmsAuthentication.Controllers
         [HttpPut]
         public JsonResult Put(SubmissionModel sub)
         {
+            LogRecord record = new LogRecord();
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             SqlDataReader myReader;
 
-            using (SqlConnection myConn = new SqlConnection(sqlDataSource))
+            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
+            string res = string.Empty;
+
+            SqlConnection myConn = new SqlConnection(sqlDataSource);
+            SqlCommand cmd = new SqlCommand("UpdateSubmissionDetails", myConn);
+
+            try
             {
                 myConn.Open();
 
-                using (SqlCommand cmd = new SqlCommand("UpdateSubmissionDetails", myConn))
-                {
-                    cmd.Parameters.AddWithValue("@Status", sub.status);
-                    cmd.Parameters.AddWithValue("@Date_Of_Return", TimeZoneInfo.ConvertTimeFromUtc(sub.date_of_return, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time")));
-                    cmd.Parameters.AddWithValue("@Fine", sub.fine);
-                    cmd.Parameters.AddWithValue("@Id", sub.t_id);
+                cmd.Parameters.AddWithValue("@Status", sub.status);
+                cmd.Parameters.AddWithValue("@Date_Of_Return", TimeZoneInfo.ConvertTimeFromUtc(sub.date_of_return, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time")));
+                cmd.Parameters.AddWithValue("@Fine", sub.fine);
+                cmd.Parameters.AddWithValue("@Id", sub.t_id);
 
-                    cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                    myReader = cmd.ExecuteReader();
-                    table.Load(myReader);
+                myReader = cmd.ExecuteReader();
+                table.Load(myReader);
 
-                    myReader.Close();
-                    myConn.Close();
-                }
+                myReader.Close();
+
+                res = "Book with T. Id: " + sub.t_id + " submitted";
             }
-
-            return new JsonResult("Book submitted!");
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                myConn.Close();
+                record.LogWrite(res);
+            }
+            return new JsonResult(res);
         }
     }
 }

@@ -50,7 +50,7 @@ namespace LibraryManagementSystemAPI.Controllers
         {
             DataTable table = new DataTable();
             SqlDataReader myReader;
-            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCo");
+            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             string res = "";
 
             SqlConnection myConn = new SqlConnection(sqlDataSource);
@@ -73,7 +73,7 @@ namespace LibraryManagementSystemAPI.Controllers
             }
             catch (Exception e)
             {
-                res = e.Message.ToString();
+                res = e.Message;
             }
             finally
             {
@@ -86,7 +86,7 @@ namespace LibraryManagementSystemAPI.Controllers
         [HttpPut, Authorize(Roles = "admin, student")]
         public JsonResult Put(BookModel book)
         {
-            string proc = "";
+            string proc = string.Empty;
             if (User.IsInRole("admin"))
             {
                 proc = "UpdateBook";

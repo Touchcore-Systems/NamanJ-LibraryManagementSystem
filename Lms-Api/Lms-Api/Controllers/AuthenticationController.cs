@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using JwtWithAngular.Models;
+using Lms_Api.LogRecord;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -28,51 +29,64 @@ namespace JwtWithAngular.Controllers
                 return BadRequest("Invalid client request");
             }
 
+            LogRecord record = new LogRecord();
+
             string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
-            using (SqlConnection myConn = new SqlConnection(sqlDataSource))
+            SqlConnection myConn = new SqlConnection(sqlDataSource);
+            SqlCommand cmd = new SqlCommand("CheckLogin", myConn);
+
+            string res = string.Empty;
+
+            try
             {
                 myConn.Open();
-                using (SqlCommand cmd = new SqlCommand("CheckLogin", myConn))
+
+                cmd.Parameters.AddWithValue("@Username", user.u_name);
+                cmd.Parameters.AddWithValue("@Password", LmsApi.HashPass.hashPass(user.u_pass));
+                cmd.Parameters.AddWithValue("@Role", user.u_role);
+
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                SqlDataReader sdr = cmd.ExecuteReader();
+
+                if (sdr.Read())
                 {
-                    cmd.Parameters.AddWithValue("@Username", user.u_name);
-                    cmd.Parameters.AddWithValue("@Password", LmsApi.HashPass.hashPass(user.u_pass));
-                    cmd.Parameters.AddWithValue("@Role", user.u_role);
+                    var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+                    var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-                    SqlDataReader sdr = cmd.ExecuteReader();
-
-                    if (sdr.Read())
+                    var claims = new List<Claim>
                     {
-                        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-                        var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+                        new Claim(ClaimTypes.Name, user.u_name),
+                        new Claim(ClaimTypes.Role, user.u_role)
+                    };
 
-                        var claims = new List<Claim>
-                            {
-                                new Claim(ClaimTypes.Name, user.u_name),
-                                new Claim(ClaimTypes.Role, user.u_role)
-                            };
+                    Console.WriteLine(user.u_role);
 
-                        Console.WriteLine(user.u_role);
+                    var tokenOptions = new JwtSecurityToken(
+                        issuer: "http://localhost:7248",
+                        audience: "http://localhost:7248",
+                        claims: claims,
+                        expires: DateTime.Now.AddMinutes(60),
+                        signingCredentials: signinCredentials
+                    );
 
-                        var tokenOptions = new JwtSecurityToken(
-                            issuer: "http://localhost:7248",
-                            audience: "http://localhost:7248",
-                            claims: claims,
-                            expires: DateTime.Now.AddMinutes(60),
-                            signingCredentials: signinCredentials
-                        );
+                    var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
-                        var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-                        Console.WriteLine(Ok(new { Token = tokenString }));
-                        return Ok(new { Token = tokenString });
-                        //return Ok(tokenString);
+                    res = "User " + user.u_name + " logged in";
 
-                    }
-                    myConn.Close();
-                    return Unauthorized();
+                    return Ok(new { Token = tokenString });
                 }
             }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                myConn.Close();
+                record.LogWrite(res);
+            }
+            return Unauthorized();
         }
     }
 }

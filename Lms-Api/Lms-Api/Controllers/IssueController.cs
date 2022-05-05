@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using Lms_Api.LogRecord;
 using LmsAuthentication.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,26 +23,38 @@ namespace LmsAuthentication.Controllers
 
         public JsonResult Get()
         {
+            LogRecord record = new LogRecord();
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             SqlDataReader myReader;
 
-            using (SqlConnection myConn = new SqlConnection(sqlDataSource))
+            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
+            string res = string.Empty;
+
+            SqlConnection myConn = new SqlConnection(sqlDataSource);
+            SqlCommand myCommand = new SqlCommand("GetIssueDetails", myConn);
+
+            try
             {
                 myConn.Open();
 
-                using (SqlCommand myCommand = new SqlCommand("GetIssueDetails", myConn))
-                {
-                    myCommand.CommandType = CommandType.StoredProcedure;
+                myCommand.CommandType = CommandType.StoredProcedure;
 
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
+                myReader = myCommand.ExecuteReader();
+                table.Load(myReader);
 
-                    myReader.Close();
-                    myConn.Close();
-                }
+                myReader.Close();
+
+                res = "Issue details fetched";
             }
-
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                myConn.Close();
+                record.LogWriter(res);
+            }
             return new JsonResult(table);
         }
 
@@ -49,30 +62,40 @@ namespace LmsAuthentication.Controllers
 
         public JsonResult Post(IssueModel issue)
         {
+            LogRecord record = new LogRecord();
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             SqlDataReader myReader;
 
-            using (SqlConnection myConn = new SqlConnection(sqlDataSource))
+            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
+            string res = string.Empty;
+
+            SqlConnection myConn = new SqlConnection(sqlDataSource);
+            SqlCommand cmd = new SqlCommand("InsertIssueDetails", myConn);
+
+            try
             {
                 myConn.Open();
 
-                using (SqlCommand cmd = new SqlCommand("InsertIssueDetails", myConn))
-                {
-                    cmd.Parameters.AddWithValue("@Username", issue.u_name);
-                    cmd.Parameters.AddWithValue("@Status", issue.status);
-                    cmd.Parameters.AddWithValue("@Id", issue.b_id);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Username", issue.u_name);
+                cmd.Parameters.AddWithValue("@Status", issue.status);
+                cmd.Parameters.AddWithValue("@Id", issue.b_id);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                    myReader = cmd.ExecuteReader();
-                    table.Load(myReader);
+                myReader = cmd.ExecuteReader();
+                table.Load(myReader);
 
-                    myReader.Close();
-                    myConn.Close();
-                }
+                myReader.Close();
+                res = "Book with B.Id: " + issue.b_id + " requested";
             }
-
-            return new JsonResult("Requested Successfully");
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                myConn.Close();
+            }
+            return new JsonResult(res);
         }
     }
 }
