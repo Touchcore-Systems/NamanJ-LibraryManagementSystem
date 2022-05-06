@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using Lms_Api.LogRecord;
+using Lms_Api;
 using LmsAuthentication.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,13 +35,14 @@ namespace LmsAuthentication.Controllers
 
             try
             {
+                myConn.Open();
+
                 cmd.Parameters.AddWithValue("@Username", u_name);
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 myReader = cmd.ExecuteReader();
                 table.Load(myReader);
-
                 myReader.Close();
 
                 res = "Books issued by user " + u_name + " fetched";

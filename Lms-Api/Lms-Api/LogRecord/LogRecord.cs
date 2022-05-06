@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Lms_Api.LogRecord
+namespace Lms_Api
 {
     public class LogRecord
     {
@@ -12,7 +12,6 @@ namespace Lms_Api.LogRecord
         public void LogWrite(string logMessage)
         {
             path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            Console.WriteLine(path);
             try
             {
                 using (StreamWriter w = File.AppendText(path + "\\" + "log.txt"))

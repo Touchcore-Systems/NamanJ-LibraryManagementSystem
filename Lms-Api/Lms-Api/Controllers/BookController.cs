@@ -2,6 +2,8 @@
 using System.Data.SqlClient;
 using LibraryManagementSystemAPI.Models;
 using Lms_Api.DTO;
+using Lms_Api;
+using Lms_Api.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,33 +25,35 @@ namespace LibraryManagementSystemAPI.Controllers
 
         public JsonResult Get()
         {
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
-            SqlDataReader myReader;
+            LogRecord record = new LogRecord();
+            BookRepository bookRepository = new BookRepository(_configuration);
+            DataTable result = null;
 
-            using (SqlConnection myConn = new SqlConnection(sqlDataSource))
+            string res = string.Empty;
+
+            try
             {
-                myConn.Open();
-
-                using (SqlCommand cmd = new SqlCommand("GetBookDetails", myConn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    myReader = cmd.ExecuteReader();
-                    table.Load(myReader);
-
-                    myReader.Close();
-                    myConn.Close();
-                }
+                result = bookRepository.GetBooks();
+                res = "Data recieved at controller and result returned";
             }
-
-            return new JsonResult(table);
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                record.LogWriter(res);
+            }
+            return new JsonResult(result);
         }
 
         [HttpPost, Authorize(Roles = "admin")]
         public JsonResult Post(BookDTO book)
         {
+            LogRecord record = new LogRecord();
             DataTable table = new DataTable();
             SqlDataReader myReader;
+
             string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             string res = "";
 
@@ -69,7 +73,7 @@ namespace LibraryManagementSystemAPI.Controllers
                 table.Load(myReader);
                 myReader.Close();
 
-                res = "Added Successfully!";
+                res = "Book " + book.b_name + " is added to collection";
             }
             catch (Exception e)
             {
@@ -78,6 +82,7 @@ namespace LibraryManagementSystemAPI.Controllers
             finally
             {
                 myConn.Close();
+                record.LogWriter(res);
             }
 
             return new JsonResult(res);
@@ -96,69 +101,87 @@ namespace LibraryManagementSystemAPI.Controllers
                 proc = "UpdateBookQuantity";
             }
 
+            LogRecord record = new LogRecord();
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             SqlDataReader myReader;
 
-            using (SqlConnection myConn = new SqlConnection(sqlDataSource))
+            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
+            string res = string.Empty;
+
+            SqlConnection myConn = new SqlConnection(sqlDataSource);
+            SqlCommand cmd = new SqlCommand(proc, myConn);
+
+            try
             {
                 myConn.Open();
 
-                using (SqlCommand cmd = new SqlCommand(proc, myConn))
+                if (User.IsInRole("admin"))
                 {
-                    if (User.IsInRole("admin"))
-                    {
-                        cmd.Parameters.AddWithValue("@Name", book.b_name);
-                        cmd.Parameters.AddWithValue("@Author", book.b_author);
-                        cmd.Parameters.AddWithValue("@Quantity", book.b_quantity);
-                        cmd.Parameters.AddWithValue("@Id", book.b_id);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@Quantity", book.b_quantity);
-                        cmd.Parameters.AddWithValue("@Id", book.b_id);
-                    }
-
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    myReader = cmd.ExecuteReader();
-                    table.Load(myReader);
-
-                    myReader.Close();
-                    myConn.Close();
+                    cmd.Parameters.AddWithValue("@Name", book.b_name);
+                    cmd.Parameters.AddWithValue("@Author", book.b_author);
+                    cmd.Parameters.AddWithValue("@Quantity", book.b_quantity);
+                    cmd.Parameters.AddWithValue("@Id", book.b_id);
                 }
-            }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Quantity", book.b_quantity);
+                    cmd.Parameters.AddWithValue("@Id", book.b_id);
+                }
 
-            return new JsonResult("Updated Successfully");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                myReader = cmd.ExecuteReader();
+                table.Load(myReader);
+
+                myReader.Close();
+                res = "Book " + book.b_id + " updated";
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                myConn.Close();
+                record.LogWriter(res);
+            }
+            return new JsonResult(res);
         }
 
         [HttpDelete("{id}"), Authorize(Roles = "admin")]
         public JsonResult Delete(int id)
         {
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
             SqlDataReader myReader;
 
-            using (SqlConnection myConn = new SqlConnection(sqlDataSource))
+            string sqlDataSource = _configuration.GetConnectionString("LmsAuthCon");
+            string res = string.Empty;
+
+            SqlConnection myConn = new SqlConnection(sqlDataSource);
+            SqlCommand cmd = new SqlCommand("DeleteBook", myConn);
+
+            try
             {
                 myConn.Open();
 
-                using (SqlCommand cmd = new SqlCommand("DeleteBook", myConn))
-                {
-                    cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.CommandType = CommandType.StoredProcedure;
+                myReader = cmd.ExecuteReader();
+                table.Load(myReader);
+                myReader.Close();
 
-                    myReader = cmd.ExecuteReader();
-                    table.Load(myReader);
-
-                    myReader.Close();
-                    myConn.Close();
-                }
+                res = "Book with B.Id: " + id + " deleted";
             }
-
-            return new JsonResult("Deleted Successfully");
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                myConn.Close();
+            }
+            return new JsonResult(res);
         }
-
     }
 }

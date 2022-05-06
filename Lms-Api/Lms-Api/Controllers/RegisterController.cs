@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using Lms_Api.DTO;
-using Lms_Api.LogRecord;
+using Lms_Api;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LmsAuthentication.Controllers

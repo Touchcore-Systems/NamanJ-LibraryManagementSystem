@@ -5,3 +5,283 @@ User Admin logged in
 Log Entry : 12:17:03 AM
 User Bishal registered successfully
 -------------------------------
+
+Log Entry : 7:01:31 AM
+User Admin logged in
+-------------------------------
+
+Log Entry : 7:01:31 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:02:22 AM
+Book 1 updated
+-------------------------------
+
+Log Entry : 7:02:25 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:02:47 AM
+Books to approve fetched!
+-------------------------------
+
+Log Entry : 7:02:48 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:03:13 AM
+User Vishal logged in
+-------------------------------
+
+Log Entry : 7:03:13 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:03:18 AM
+ExecuteReader requires an open and available Connection. The connection's current state is closed.
+-------------------------------
+
+Log Entry : 7:03:22 AM
+ExecuteReader requires an open and available Connection. The connection's current state is closed.
+-------------------------------
+
+Log Entry : 7:03:36 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:03:37 AM
+ExecuteReader requires an open and available Connection. The connection's current state is closed.
+-------------------------------
+
+Log Entry : 7:05:04 AM
+User Admin logged in
+-------------------------------
+
+Log Entry : 7:05:04 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:05:08 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:05:10 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:05:10 AM
+Book with B.Id: 1 requested
+-------------------------------
+
+Log Entry : 7:05:14 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:05:17 AM
+Books to approve fetched!
+-------------------------------
+
+Log Entry : 7:05:20 AM
+Book Status Updated Successfully!
+-------------------------------
+
+Log Entry : 7:05:20 AM
+Book 1 updated
+-------------------------------
+
+Log Entry : 7:05:20 AM
+Books to approve fetched!
+-------------------------------
+
+Log Entry : 7:05:24 AM
+ExecuteReader requires an open and available Connection. The connection's current state is closed.
+-------------------------------
+
+Log Entry : 7:05:26 AM
+ExecuteReader requires an open and available Connection. The connection's current state is closed.
+-------------------------------
+
+Log Entry : 7:06:08 AM
+ExecuteReader requires an open and available Connection. The connection's current state is closed.
+-------------------------------
+
+Log Entry : 7:07:03 AM
+Books issued by user Vishal fetched
+-------------------------------
+
+Log Entry : 7:07:27 AM
+Books issued by user Vishal fetched
+-------------------------------
+
+Log Entry : 7:07:27 AM
+Book with T. Id: 1 submitted
+-------------------------------
+
+Log Entry : 7:07:29 AM
+Book 1 updated
+-------------------------------
+
+Log Entry : 7:07:29 AM
+Book with T. Id: 2 submitted
+-------------------------------
+
+Log Entry : 7:07:29 AM
+Books issued by user Vishal fetched
+-------------------------------
+
+Log Entry : 7:07:30 AM
+Book 1 updated
+-------------------------------
+
+Log Entry : 7:07:30 AM
+Book with T. Id: 4 submitted
+-------------------------------
+
+Log Entry : 7:07:30 AM
+Books issued by user Vishal fetched
+-------------------------------
+
+Log Entry : 7:07:31 AM
+Book with T. Id: 5 submitted
+-------------------------------
+
+Log Entry : 7:07:31 AM
+Book 1 updated
+-------------------------------
+
+Log Entry : 7:07:31 AM
+Books issued by user Vishal fetched
+-------------------------------
+
+Log Entry : 7:07:32 AM
+Book with T. Id: 6 submitted
+-------------------------------
+
+Log Entry : 7:07:32 AM
+Book 1 updated
+-------------------------------
+
+Log Entry : 7:07:32 AM
+Books issued by user Vishal fetched
+-------------------------------
+
+Log Entry : 7:07:33 AM
+Book 1 updated
+-------------------------------
+
+Log Entry : 7:07:33 AM
+Books issued by user Vishal fetched
+-------------------------------
+
+Log Entry : 7:07:36 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:07:39 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:07:48 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:08:22 AM
+Book The Alchemist is added to collection
+-------------------------------
+
+Log Entry : 7:08:25 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:08:29 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:09:28 AM
+Books issued by user Vishal fetched
+-------------------------------
+
+Log Entry : 7:09:33 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:49:26 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:49:48 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 7:55:08 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 11:34:28 AM
+User Admin logged in
+-------------------------------
+
+Log Entry : 11:34:29 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 11:36:00 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 11:36:18 AM
+Book New is added to collection
+-------------------------------
+
+Log Entry : 11:36:20 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 11:36:22 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 11:38:40 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 11:39:56 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 11:41:42 AM
+User Vishal logged in
+-------------------------------
+
+Log Entry : 11:41:42 AM
+Available books fetched
+-------------------------------
+
+Log Entry : 11:51:17 AM
+Available books fetched and passed to controller
+-------------------------------
+
+Log Entry : 11:51:17 AM
+Data recieved at controller and result returned
+-------------------------------
+
+Log Entry : 11:51:26 AM
+User Admin logged in
+-------------------------------
+
+Log Entry : 11:51:26 AM
+Available books fetched and passed to controller
+-------------------------------
+
+Log Entry : 11:51:26 AM
+Data recieved at controller and result returned
+-------------------------------
+
+Log Entry : 11:51:30 AM
+Available books fetched and passed to controller
+-------------------------------
+
+Log Entry : 11:51:30 AM
+Data recieved at controller and result returned
+-------------------------------
