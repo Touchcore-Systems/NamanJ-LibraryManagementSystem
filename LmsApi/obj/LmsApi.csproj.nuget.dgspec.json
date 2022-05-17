@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Desktop\\LmsApiWithEntityFrameWork\\LmsApi\\LmsApi\\LmsApi.csproj": {}
+    "C:\\Users\\ASUS\\Desktop\\TouchcoreSystems\\LmsApp\\LmsApi\\LmsApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Desktop\\LmsApiWithEntityFrameWork\\LmsApi\\LmsApi\\LmsApi.csproj": {
+    "C:\\Users\\ASUS\\Desktop\\TouchcoreSystems\\LmsApp\\LmsApi\\LmsApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\LmsApiWithEntityFrameWork\\LmsApi\\LmsApi\\LmsApi.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\TouchcoreSystems\\LmsApp\\LmsApi\\LmsApi.csproj",
         "projectName": "LmsApi",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\LmsApiWithEntityFrameWork\\LmsApi\\LmsApi\\LmsApi.csproj",
+        "projectPath": "C:\\Users\\ASUS\\Desktop\\TouchcoreSystems\\LmsApp\\LmsApi\\LmsApi.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\LmsApiWithEntityFrameWork\\LmsApi\\LmsApi\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\Desktop\\TouchcoreSystems\\LmsApp\\LmsApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",

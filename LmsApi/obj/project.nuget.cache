@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "80yggteDG9OuRM4Og0q930iF3y0oumCA+OHUY0W8EQWAiwj79W6kBiQQyLbz7y47vV2P9U8Gd0YB3Ph1hWb7Pg==",
+  "dgSpecHash": "qQavp5tCypmwfTnPCbgrPOTFLXkdT3CGEliUrcX41nuG7AISy6d30Dn13sCP13CovnoIgSPz8jhsqkf4qVb2jw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\LmsApiWithEntityFrameWork\\LmsApi\\LmsApi\\LmsApi.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\TouchcoreSystems\\LmsApp\\LmsApi\\LmsApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\autofac\\4.9.4\\autofac.4.9.4.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
