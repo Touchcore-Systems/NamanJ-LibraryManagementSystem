@@ -1,0 +1,58 @@
+<p class="h3 text-center font-weight-bold m-5">Books To Approve</p>
+<div class="container-fluid">
+    <div class="search-container ml-5">
+        <mat-form-field appearence="fill">
+            <input matInput placeholder="Search book..." autocomplete="off" (keyup)="filterData($event)">
+        </mat-form-field>
+    </div>
+    <div class="mat-elevation-z8">
+        <table mat-table matSort [dataSource]="ApproveList">
+
+            <ng-container matColumnDef="tId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> T. Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.tId}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="uName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> User Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.uName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="bId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Book Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.bId}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="bName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Book Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.bName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="bAuthor">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Book Author </th>
+                <td mat-cell *matCellDef="let element"> {{element.bAuthor}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Approve">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element">
+                    <button class="btn btn-success btn-sm font-weight-bold" (click)="approveBook(element)">
+                        Approve
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="approveDetail"></tr>
+            <tr mat-row *matRowDef="let row; columns: approveDetail;"></tr>
+        </table>
+        <table>
+            <tr *ngIf="isEmpty">
+                <td class="text-center">
+                    No books to approve at the moment!
+                </td>
+            </tr>
+        </table>
+        <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50]" aria-label="Select page">
+        </mat-paginator>
+    </div>
+</div>

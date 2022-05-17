@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center align-items-center" style="min-height: 85vh;">
+    <form class="form-signin card shadow p-4" #loginForm="ngForm" (ngSubmit)="login(loginForm)" style="width: 400px;">
+        <div class="container-fluid">
+            <p class="h2 form signin heading text-center font-weight-bold">LogIn</p>
+
+            <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password</div>
+            <br />
+            <label for="username" class="sr-only">UserName</label>
+            <input type="email" id="username" name="username" ngModel class="form-control" placeholder="UserName"
+                required autofocus>
+            <br />
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password"
+                required autofocus>
+            <br />
+            <label for="role" class="sr-only">Role</label>
+            <select name="role" id="role" ngModel class="form-control" required autofocus>
+                <option value="admin">Admin</option>
+                <option value="student">Student</option>
+            </select>
+            <br />
+            <div class="text-center">
+                <button class=" btn btn-outline-success font-weight-bold" type="submit">Submit</button>
+                <p class="text-muted mt-3">Not a Member? <a class="font-weight-bold btn btn-outline-primary btn-sm"
+                        data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
+                        data-keyboard="false">Register Now</a></p>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" style="max-width: 450px;">
+                    <div class="alert alert-danger" *ngIf="diffPass">Password must match!</div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username" ngModel placeholder="Enter username"
+                            autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" ngModel placeholder="Enter password"
+                            autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" name="con_password" ngModel
+                            placeholder="Confirm password" autocomplete="off">
+                    </div>
+                    <button class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

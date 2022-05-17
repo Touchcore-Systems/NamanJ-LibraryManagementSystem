@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand">Library Management System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item m-1">
+                <a class="nav-link" *ngIf="isAuthenticated() && isAdmin()" routerLink="admin/available-books"
+                    [routerLinkActive]="['active']"> Available Books</a>
+            </li>
+            <li class="nav-item m-1">
+                <a class="nav-link" *ngIf="isAuthenticated() && isAdmin()" routerLink="admin/books-to-approve"
+                    [routerLinkActive]="['active']"> Approve Books</a>
+            </li>
+            <li class="nav-item m-1">
+                <a class="nav-link" *ngIf="isAuthenticated()  && isAdmin()" routerLink="admin/issue-details"
+                    [routerLinkActive]="['active']"> Issue Details</a>
+            </li>
+            <li class="nav-item m-1">
+                <a class="nav-link" *ngIf="isAuthenticated()  && isStudent()" routerLink="student/available-books"
+                    [routerLinkActive]="['active']"> Available Books</a>
+            </li>
+            <li class="nav-item m-1">
+                <a class="nav-link" *ngIf="isAuthenticated()  && isStudent()" routerLink="student/my-books"
+                    [routerLinkActive]="['active']"> My Books</a>
+            </li>
+            <li class="nav-item m-1">
+                <button *ngIf="isAuthenticated()" class="btn btn-outline-danger btn-sm nav-link font-weight-bold"
+                    routerLink="" (click)="logout()">
+                    Log Out
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

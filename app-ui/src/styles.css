@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+table{
+    width: 100%;
+}
+th{
+    font-weight: bolder !important;
+    font-size: 13px !important;
+    color: black !important;
+}
+
+body{
+    background-color: #fafafa !important;
+}
