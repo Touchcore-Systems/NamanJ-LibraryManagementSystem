@@ -27,9 +27,7 @@ export class IssueDetailsComponent implements OnInit {
 
   refreshIssueList() {
     this.bookService.getIssueDetails().subscribe((data) => {
-      if (data.length == 0) {
-        this.isEmpty = true;
-      }
+      data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
       this.IssueList = new MatTableDataSource(data);
       this.IssueList.paginator = this.paginator;
       this.IssueList.sort = this.matSort;

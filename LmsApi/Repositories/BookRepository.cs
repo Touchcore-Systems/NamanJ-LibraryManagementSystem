@@ -1,6 +1,7 @@
 ﻿using LmsApi.Data;
 using LmsApi.Interfaces;
 using LmsApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace LmsApi.Repositories
@@ -31,6 +32,20 @@ namespace LmsApi.Repositories
             }
 
             return bookDetails;
+        }
+
+        public async Task<string> DeleteBook(int id, BookDetails bookDetails)
+        {
+            try
+            {
+                _context.BookDetails.Remove(bookDetails);
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return "Book deleted";
         }
     }
 }

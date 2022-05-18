@@ -30,7 +30,7 @@ export class BooksToApproveComponent implements OnInit {
     var approveStatus = { Status: item.Status}
     if (item.bQuantity >= 1) {
       this.bookService.updateApproveStatus(item.tId, approveStatus).subscribe((res) => {
-        this.service.SnackBarMessage(res.toString(), "Dismiss");
+        this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");
         this.refreshToApproveList();
       });
     } else {
@@ -40,9 +40,7 @@ export class BooksToApproveComponent implements OnInit {
 
   refreshToApproveList() {
     this.bookService.getBooksToApprove().subscribe((data) => {
-      if (data.length == 0) {
-        this.isEmpty = true;
-      }
+      data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
       this.ApproveList = new MatTableDataSource(data);
       this.ApproveList.paginator = this.paginator;
       this.ApproveList.sort = this.matSort;

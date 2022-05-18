@@ -28,7 +28,6 @@ export class BookService {
   }
 
   requestBook(details: any){
-    console.log(details);
     return this.http.post(this.APIUrl + '/Issue/request', details);
   }
 

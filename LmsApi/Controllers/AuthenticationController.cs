@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using LmsApi.Data;
 using LmsApi.DTO;
+using LmsApi.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -15,6 +16,8 @@ namespace LmsApi.Controllers
     {
         private readonly DataContext _context;
 
+        LogRecord logRecord = new();
+
         public AuthenticationController(DataContext context)
         {
             _context = context;
@@ -22,6 +25,7 @@ namespace LmsApi.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<LoginDTO>> Login(LoginDTO loginDto)
         {
+            string res = string.Empty;
             var user = await _context.Users.SingleOrDefaultAsync(
                 x => x.UName == loginDto.UName
                 && x.UPass == HashPass.hashPass(loginDto.UPass)
@@ -30,6 +34,8 @@ namespace LmsApi.Controllers
 
             if (user == null)
             {
+                res = "User unauthenticated";
+                logRecord.LogWriter(res);
                 return NotFound();
             }
 
@@ -50,15 +56,15 @@ namespace LmsApi.Controllers
                 signingCredentials: signinCredentials
             );
 
-            var tokenString = string.Empty;
-
+            string tokenString = string.Empty;
             try
             {
                 tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+                res = "User logged in and token generated";
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                res = ex.Message;
             }
 
             return Ok(new { Token = tokenString });

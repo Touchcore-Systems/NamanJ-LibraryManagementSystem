@@ -32,7 +32,7 @@ export class AddEditBooksAdminComponent implements OnInit {
     console.log;
 
     this.bookService.addBook(details).subscribe((res) => {
-      this.service.SnackBarMessage(res.toString(), "Dismiss");
+      this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");
     });
   }
 

@@ -1,5 +1,6 @@
 ﻿using LmsApi.Data;
 using LmsApi.DTO;
+using LmsApi.Helpers;
 using LmsApi.Interfaces;
 using LmsApi.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ namespace LmsApi.Controllers
         private readonly DataContext _context;
         private readonly IUserRepository _userRepository;
 
+        LogRecord logRecord = new();
         public UsersController(DataContext context, IUserRepository userRepository)
         {
             _context = context;
@@ -30,7 +32,7 @@ namespace LmsApi.Controllers
                 URole = userDto.URole
             };
 
-            string res;
+            string res = String.Empty;
             try
             {
                 if (users.URole == "admin" || users.URole == "student")
@@ -43,6 +45,10 @@ namespace LmsApi.Controllers
             catch (Exception ex)
             {
                 res = ex.Message;
+            }
+            finally
+            {
+                logRecord.LogWriter(res);
             }
             return new JsonResult(res);
         }

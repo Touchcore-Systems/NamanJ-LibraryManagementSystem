@@ -39,7 +39,7 @@ export class ShowBooksStudentComponent implements OnInit {
       };
 
       this.bookService.requestBook(details).subscribe((res) => {
-        this.service.SnackBarMessage(res.toString(), "Dismiss");
+        this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");
       });
     } else {
       this.service.SnackBarMessage("Out of stock!", "Dismiss")
@@ -49,9 +49,7 @@ export class ShowBooksStudentComponent implements OnInit {
 
   refreshBookList() {
     this.bookService.getBookList().subscribe((data) => {
-      if (data.length == 0) {
-        this.isEmpty = true;
-      }
+      data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
       this.BookList = new MatTableDataSource(data);
       this.BookList.paginator = this.paginator;
       this.BookList.sort = this.matSort;

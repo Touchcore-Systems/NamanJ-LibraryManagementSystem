@@ -1,5 +1,6 @@
 ﻿using LmsApi.Data;
 using LmsApi.DTO;
+using LmsApi.Helpers;
 using LmsApi.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,8 @@ namespace LmsApi.Controllers
         private readonly DataContext _context;
         private readonly IApproveRepository _approveRepository;
 
+        LogRecord logRecord = new();
+
         public ApproveController(DataContext context, IApproveRepository approveRepository)
         {
             _context = context;
@@ -23,7 +26,11 @@ namespace LmsApi.Controllers
         [HttpGet, Authorize(Roles = "admin, student")]
         public async Task<JsonResult> GetBooks()
         {
+            string res = String.Empty;
             var books = await _approveRepository.GetBooksAsync();
+            res = "Books to approve fetched";
+
+            logRecord.LogWriter(res);
             return books;
         }
 
@@ -36,16 +43,18 @@ namespace LmsApi.Controllers
                 return BadRequest();
             }
 
+            string res = String.Empty;
             try
             {
                 await _approveRepository.ApproveBookAsync(id, approveDTO);
+                res = "book approved";
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                res = ex.Message;
             }
 
-            return Ok(new JsonResult("Updated"));
+            return new JsonResult(res);
         }
 
         private bool TransactionDetailsExists(int id)

@@ -1,5 +1,6 @@
 ﻿using LmsApi.Data;
 using LmsApi.DTO;
+using LmsApi.Helpers;
 using LmsApi.Interfaces;
 using LmsApi.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -14,6 +15,8 @@ namespace LmsApi.Controllers
         private readonly DataContext _context;
         private readonly IIssueRepository _issueRepository;
 
+        LogRecord logRecord = new();
+
         public IssueController(DataContext context, IIssueRepository issueRepository)
         {
             _context = context;
@@ -24,7 +27,22 @@ namespace LmsApi.Controllers
         [HttpGet, Authorize(Roles = "admin")]
         public async Task<ActionResult> GetIssueDetails()
         {
-            return await _issueRepository.GetIssueDetailsAsync();
+            string res = string.Empty;
+            JsonResult issueDetails = new("");
+            try
+            {
+                issueDetails = await _issueRepository.GetIssueDetailsAsync();
+                res = "Issue details fetched";
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                logRecord.LogWriter(res);
+            }
+            return issueDetails;
         }
 
         // POST: api/Issue/request
@@ -38,7 +56,7 @@ namespace LmsApi.Controllers
                 Status = issueDto.Status
             };
 
-            string res;
+            string res = String.Empty;
             try
             {
                 await _issueRepository.IssueBook(issueDetails);
@@ -47,6 +65,10 @@ namespace LmsApi.Controllers
             catch (Exception ex)
             {
                 res = ex.Message;
+            }
+            finally
+            {
+                logRecord.LogWriter(res);
             }
             return new JsonResult(res);
         }

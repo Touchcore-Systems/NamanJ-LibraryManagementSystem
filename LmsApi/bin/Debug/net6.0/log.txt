@@ -1,0 +1,235 @@
+Log Entry : 10:52:18 AM
+Book deleted
+-------------------------------
+
+Log Entry : 10:57:59 AM
+Book added
+-------------------------------
+
+Log Entry : 11:00:44 AM
+Book details updated
+-------------------------------
+
+Log Entry : 11:11:12 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 11:11:59 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 11:14:43 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 11:37:10 AM
+Book deleted
+-------------------------------
+
+Log Entry : 11:38:32 AM
+Book added
+-------------------------------
+
+Log Entry : 11:38:43 AM
+Book details updated
+-------------------------------
+
+Log Entry : 11:38:56 AM
+books issued to user Vishal fetched
+-------------------------------
+
+Log Entry : 11:39:00 AM
+Book with BId 22 requested
+-------------------------------
+
+Log Entry : 11:39:03 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 11:39:13 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 11:40:22 AM
+books issued to user Vishal fetched
+-------------------------------
+
+Log Entry : 11:40:29 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 11:40:33 AM
+books issued to user Vishal fetched
+-------------------------------
+
+Log Entry : 11:43:03 AM
+books issued to user Vishal fetched
+-------------------------------
+
+Log Entry : 11:46:15 AM
+books issued to user Vishal fetched
+-------------------------------
+
+Log Entry : 11:46:22 AM
+books issued to user Vishal fetched
+-------------------------------
+
+Log Entry : 11:46:35 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 11:46:41 AM
+Book approved
+-------------------------------
+
+Log Entry : 11:47:26 AM
+Book approved
+-------------------------------
+
+Log Entry : 11:53:15 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 11:53:18 AM
+Book with BId 22 requested
+-------------------------------
+
+Log Entry : 11:53:22 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 11:53:35 AM
+books issued to user Vishal fetched
+-------------------------------
+
+Log Entry : 11:53:40 AM
+books issued to user Vishal fetched
+-------------------------------
+
+Log Entry : 11:53:45 AM
+Book submitted
+-------------------------------
+
+Log Entry : 11:53:45 AM
+Book approved
+-------------------------------
+
+Log Entry : 11:53:48 AM
+books issued to user Vishal fetched
+-------------------------------
+
+Log Entry : 11:53:59 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 11:54:05 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 11:54:11 AM
+Book with BId 22 requested
+-------------------------------
+
+Log Entry : 11:54:19 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 11:57:09 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 11:59:01 AM
+Book approved
+-------------------------------
+
+Log Entry : 12:04:32 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 12:04:35 PM
+Book with BId 22 requested
+-------------------------------
+
+Log Entry : 12:04:38 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 12:06:30 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 12:06:36 PM
+Book with BId 22 requested
+-------------------------------
+
+Log Entry : 12:06:38 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 12:06:41 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 12:06:44 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 12:07:01 PM
+Book approved
+-------------------------------
+
+Log Entry : 12:07:15 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 12:07:26 PM
+Book approved
+-------------------------------
+
+Log Entry : 12:07:35 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 12:25:19 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 12:44:57 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 12:45:21 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 12:48:50 PM
+Book with BId 22 requested
+-------------------------------
+
+Log Entry : 12:48:54 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 12:48:57 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 12:49:00 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 12:49:10 PM
+Book approved
+-------------------------------
+
+Log Entry : 12:49:15 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 12:49:20 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 12:49:22 PM
+Books to approve fetched
+-------------------------------

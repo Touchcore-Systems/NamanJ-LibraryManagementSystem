@@ -1,6 +1,7 @@
 ﻿#nullable disable
 using LmsApi.Data;
 using LmsApi.DTO;
+using LmsApi.Helpers;
 using LmsApi.Interfaces;
 using LmsApi.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -15,6 +16,8 @@ namespace LmsApi.Controllers
     {
         private readonly DataContext _context;
         private readonly IBookRepository _bookRepository;
+
+        LogRecord logRecord = new();
 
         public BookController(DataContext context, IBookRepository bookRepository)
         {
@@ -41,24 +44,23 @@ namespace LmsApi.Controllers
 
             _context.Entry(bookDetails).State = EntityState.Modified;
 
+            string res = string.Empty;
             try
             {
                 await _context.SaveChangesAsync();
+                res = "Book details updated";
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!BookDetailsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                res = ex.Message;
+            }
+            finally
+            {
+                logRecord.LogWriter(res);
             }
 
             //return NoContent();
-            return new JsonResult("Updated");
+            return new JsonResult(res);
         }
 
         // POST: api/Book
@@ -72,7 +74,7 @@ namespace LmsApi.Controllers
                 BQuantity = bookDto.BQuantity
             };
 
-            string res;
+            string res = string.Empty;
             try
             {
                 //var book = await _bookRepository.AddBook(bookDetails);
@@ -82,6 +84,10 @@ namespace LmsApi.Controllers
             catch (Exception ex)
             {
                 res = ex.Message;
+            }
+            finally
+            {
+                logRecord.LogWriter(res);
             }
             return new JsonResult(res);
         }
@@ -96,16 +102,28 @@ namespace LmsApi.Controllers
                 return NotFound();
             }
 
-            _context.BookDetails.Remove(bookDetails);
-            await _context.SaveChangesAsync();
+            var res = string.Empty;
+            try
+            {
+                res = await _bookRepository.DeleteBook(id, bookDetails);
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                logRecord.LogWriter(res);
+            }
 
-            //return NoContent();
-            return new JsonResult("Book deleted");
+            return new JsonResult(res);
         }
 
+        /*
         private bool BookDetailsExists(int id)
         {
             return _context.BookDetails.Any(e => e.BId == id);
         }
+        */
     }
 }

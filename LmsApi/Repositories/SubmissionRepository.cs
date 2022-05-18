@@ -16,10 +16,9 @@ namespace LmsApi.Repositories
         }
         public async Task<JsonResult> GetBooksAsync(string uName)
         {
-            Console.WriteLine(uName);
             var issueDetails = await _context.BookDetails
                 .Join(
-                        _context.IssueDetails.Where(x => x.UName == "Vishal" && x.Status == uName),
+                        _context.IssueDetails.Where(x => x.UName == uName && x.Status == "approved"),
                         book => book.BId,
                         issue => issue.BId,
                         (book, issue) => new

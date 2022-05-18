@@ -53,9 +53,8 @@ export class ShowBooksAdminComponent implements OnInit {
 
   deleteClick(item: any) {
     if (confirm('Are you sure?')) {
-      this.bookService.deleteBook(item.bId).subscribe(data => {
-        // alert(data.toString());
-        this.service.SnackBarMessage(data.toString(), "Dismiss");
+      this.bookService.deleteBook(item.bId).subscribe(res => {
+        this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");
         this.refreshBookList();
       })
     }
@@ -63,9 +62,7 @@ export class ShowBooksAdminComponent implements OnInit {
 
   refreshBookList() {
     this.bookService.getBookList().subscribe((data) => {
-      if (data.length == 0) {
-        this.isEmpty = true;
-      }
+      data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
       this.BookList = new MatTableDataSource(data);
       this.BookList.paginator = this.paginator;
       this.BookList.sort = this.matSort;

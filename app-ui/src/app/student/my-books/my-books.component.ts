@@ -39,7 +39,7 @@ export class MyBooksComponent implements OnInit {
     };
 
     this.bookService.updateReturnStatus(item.tId, details).subscribe((res) => {
-      this.service.SnackBarMessage(res.toString(), "Dismiss");
+      this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");
       this.refreshStudentBooks();
     });
   }
@@ -54,9 +54,7 @@ export class MyBooksComponent implements OnInit {
 
   refreshStudentBooks() {
     this.bookService.getStudentBooks().subscribe((data) => {
-      if (data.length == 0) {
-        this.isEmpty = true;
-      }
+      data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
       this.StudentBooks = new MatTableDataSource(data);
       this.StudentBooks.paginator = this.paginator;
       this.StudentBooks.sort = this.matSort;
