@@ -26,7 +26,6 @@ export class BooksToApproveComponent implements OnInit {
   isEmpty = false;
 
   approveBook(item: any) {
-    console.log(item);
     var approveStatus = { Status: item.Status}
     if (item.bQuantity >= 1) {
       this.bookService.updateApproveStatus(item.tId, approveStatus).subscribe((res) => {
@@ -48,6 +47,6 @@ export class BooksToApproveComponent implements OnInit {
   }
 
   filterData($event: any) {
-    this.ApproveList.filter = $event.target.detailsue;
+    this.ApproveList.filter = $event.target.value;
   }
 }

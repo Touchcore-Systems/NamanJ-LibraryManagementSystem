@@ -27,11 +27,22 @@ namespace LmsApi.Controllers
         public async Task<JsonResult> GetBooks()
         {
             string res = String.Empty;
-            var books = await _approveRepository.GetBooksAsync();
-            res = "Books to approve fetched";
 
-            logRecord.LogWriter(res);
-            return books;
+            try
+            {
+                var books = await _approveRepository.GetBooksAsync();
+                res = "Books to approve fetched";
+                return books;
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                logRecord.LogWriter(res);
+            }
+            return new JsonResult(res);
         }
 
         // PUT: api/Approve/5

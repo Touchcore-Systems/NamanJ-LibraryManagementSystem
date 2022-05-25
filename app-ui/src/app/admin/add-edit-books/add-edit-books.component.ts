@@ -29,7 +29,6 @@ export class AddEditBooksAdminComponent implements OnInit {
       bAuthor: this.BookAuthor,
       bQuantity: this.BookQuantity
     };
-    console.log;
 
     this.bookService.addBook(details).subscribe((res) => {
       this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");

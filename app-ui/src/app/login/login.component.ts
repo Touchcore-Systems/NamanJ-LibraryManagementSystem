@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
       };
 
       this.service.registerUser(details).subscribe((res: any) => {
-        alert(res.toString());
         this.service.SnackBarMessage(res.toString(), "Dismiss");
       });
     }

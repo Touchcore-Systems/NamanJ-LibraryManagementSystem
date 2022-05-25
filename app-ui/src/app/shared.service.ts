@@ -19,7 +19,6 @@ export class SharedService {
   }
 
   registerUser(details: any) {
-    console.log(details);
     return this.http.post(this.APIUrl + '/Users/register', details);
   }
 

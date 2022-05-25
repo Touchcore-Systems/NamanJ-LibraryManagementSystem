@@ -45,7 +45,7 @@ namespace LmsApi.Repositories
             {
                 _context.Entry(details).State = EntityState.Modified;
                 _context.Entry(bookDetails).State = EntityState.Modified;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {

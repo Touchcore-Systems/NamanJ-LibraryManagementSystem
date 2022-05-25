@@ -233,3 +233,923 @@ Books to approve fetched
 Log Entry : 12:49:22 PM
 Books to approve fetched
 -------------------------------
+
+Log Entry : 1:40:37 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:40:42 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:40:53 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:40:53 PM
+Book with BId 22 requested
+-------------------------------
+
+Log Entry : 1:40:59 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:41:03 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:41:07 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:41:12 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:41:14 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:41:22 PM
+Book approved
+-------------------------------
+
+Log Entry : 1:41:26 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:41:32 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:42:46 PM
+Book added
+-------------------------------
+
+Log Entry : 1:42:49 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:42:51 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:42:52 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:43:00 PM
+Book details updated
+-------------------------------
+
+Log Entry : 1:43:02 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:43:11 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:43:27 PM
+Book deleted
+-------------------------------
+
+Log Entry : 1:43:27 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:43:36 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:43:46 PM
+Book added
+-------------------------------
+
+Log Entry : 1:43:48 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:54:55 PM
+User added
+-------------------------------
+
+Log Entry : 1:55:46 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:56:13 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:56:52 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:56:58 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:56:58 PM
+Book with BId 24 requested
+-------------------------------
+
+Log Entry : 1:57:02 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:57:04 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:57:06 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:57:10 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:57:21 PM
+Book approved
+-------------------------------
+
+Log Entry : 1:57:26 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:57:27 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:28:14 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:28:14 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:28:20 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 6:28:22 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 6:28:23 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:28:26 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 6:28:28 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 6:45:12 PM
+User added
+-------------------------------
+
+Log Entry : 6:45:25 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:48:29 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:48:33 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:49:17 PM
+Book added
+-------------------------------
+
+Log Entry : 6:49:21 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:49:38 PM
+Book deleted
+-------------------------------
+
+Log Entry : 6:49:38 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:51:38 PM
+Book added
+-------------------------------
+
+Log Entry : 6:51:42 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:51:51 PM
+Book added
+-------------------------------
+
+Log Entry : 6:51:55 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:52:29 PM
+Book added
+-------------------------------
+
+Log Entry : 6:52:33 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:52:41 PM
+Book added
+-------------------------------
+
+Log Entry : 6:52:43 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:52:49 PM
+Book deleted
+-------------------------------
+
+Log Entry : 6:52:49 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:52:52 PM
+Book deleted
+-------------------------------
+
+Log Entry : 6:52:52 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:52:55 PM
+Book deleted
+-------------------------------
+
+Log Entry : 6:52:55 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:52:57 PM
+Book deleted
+-------------------------------
+
+Log Entry : 6:52:57 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:53:29 PM
+Book added
+-------------------------------
+
+Log Entry : 6:53:32 PM
+Books fetched
+-------------------------------
+
+Log Entry : 6:53:36 PM
+Book deleted
+-------------------------------
+
+Log Entry : 6:53:36 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:00:26 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:00:34 PM
+Book added
+-------------------------------
+
+Log Entry : 7:00:38 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:00:56 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:00:58 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:01:00 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:01:06 PM
+Book added
+-------------------------------
+
+Log Entry : 7:01:08 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:02:49 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:02:56 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:03:06 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:03:13 PM
+Book added
+-------------------------------
+
+Log Entry : 7:03:40 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:03:58 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:04:03 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:04:07 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:06:12 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:06:20 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:06:30 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:06:50 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:06:58 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:07:00 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:07:05 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:07:11 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:07:27 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:07:47 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:08:03 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:08:10 PM
+Book added
+-------------------------------
+
+Log Entry : 7:08:33 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:08:36 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:08:42 PM
+Book added
+-------------------------------
+
+Log Entry : 7:10:30 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:10:51 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:15:00 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:15:04 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:15:11 PM
+Book added
+-------------------------------
+
+Log Entry : 7:15:51 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:15:56 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:15:57 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:16:02 PM
+Book added
+-------------------------------
+
+Log Entry : 7:16:32 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:17:04 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:17:10 PM
+Book added
+-------------------------------
+
+Log Entry : 7:18:49 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:18:54 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:19:03 PM
+Book added
+-------------------------------
+
+Log Entry : 7:20:05 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:20:10 PM
+Book added
+-------------------------------
+
+Log Entry : 7:20:24 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:20:31 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:20:57 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:21:10 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:21:27 PM
+Book added
+-------------------------------
+
+Log Entry : 7:21:36 PM
+Book added
+-------------------------------
+
+Log Entry : 7:23:48 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:44:23 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:44:34 PM
+Book added
+-------------------------------
+
+Log Entry : 7:44:37 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:44:53 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:46:42 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:46:50 PM
+Book added
+-------------------------------
+
+Log Entry : 7:47:19 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:47:25 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:47:40 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:47:57 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:49:32 PM
+Book added
+-------------------------------
+
+Log Entry : 7:49:36 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:49:40 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:49:40 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:49:46 PM
+Book details updated
+-------------------------------
+
+Log Entry : 7:49:48 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:49:51 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:49:51 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:49:53 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:49:53 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:49:55 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:49:56 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:49:58 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:49:58 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:00 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:50:00 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:03 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:50:03 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:05 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:50:05 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:07 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:50:07 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:10 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:50:10 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:12 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:50:12 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:14 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:50:14 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:17 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:50:17 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:19 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:50:19 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:22 PM
+Book deleted
+-------------------------------
+
+Log Entry : 7:50:22 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:50:30 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:50:43 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:50:48 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:50:58 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:51:00 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:51:00 PM
+Book with BId 22 requested
+-------------------------------
+
+Log Entry : 7:51:02 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:51:02 PM
+Book with BId 24 requested
+-------------------------------
+
+Log Entry : 7:51:04 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:52:06 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:52:06 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:52:11 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:52:12 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:52:13 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:52:13 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:52:25 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:52:25 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:52:29 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:52:29 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:52:49 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:53:48 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:53:49 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:53:56 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:53:58 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:54:09 PM
+Book approved
+-------------------------------
+
+Log Entry : 7:54:10 PM
+Book approved
+-------------------------------
+
+Log Entry : 7:54:13 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:54:23 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:24 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:54:25 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:54:26 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:34 PM
+Book details updated
+-------------------------------
+
+Log Entry : 7:54:36 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:55:04 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:55:38 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:55:45 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:18 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:20 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:22 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:23 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:26 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:26 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:27 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:28 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:29 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:44 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:48 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:57:14 PM
+Books fetched
+-------------------------------
+
+Log Entry : 7:58:26 PM
+Books fetched
+-------------------------------
+
+Log Entry : 8:02:28 PM
+Books fetched
+-------------------------------
+
+Log Entry : 8:03:02 PM
+Book details updated
+-------------------------------
+
+Log Entry : 8:03:06 PM
+Books fetched
+-------------------------------
+
+Log Entry : 8:03:10 PM
+Books fetched
+-------------------------------
+
+Log Entry : 8:03:17 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 8:03:19 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 8:03:22 PM
+Books fetched
+-------------------------------
+
+Log Entry : 8:06:04 PM
+Books fetched
+-------------------------------
+
+Log Entry : 8:06:08 PM
+Books fetched
+-------------------------------
+
+Log Entry : 8:08:44 PM
+Books fetched
+-------------------------------

@@ -18,7 +18,6 @@ namespace LmsApi.Controllers
         private readonly IBookRepository _bookRepository;
 
         LogRecord logRecord = new();
-
         public BookController(DataContext context, IBookRepository bookRepository)
         {
             _context = context;
@@ -29,8 +28,22 @@ namespace LmsApi.Controllers
         [HttpGet, Authorize(Roles = "admin, student")]
         public async Task<ActionResult<IEnumerable<BookDetails>>> GetBooks()
         {
-            var books = await _bookRepository.GetBooksAsync();
-            return Ok(books);
+            string res = string.Empty;
+            try
+            {
+                var books = await _bookRepository.GetBooksAsync();
+                res = "Books fetched";
+                return Ok(books);
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                logRecord.LogWriter(res);
+            }
+            return BadRequest(res);
         }
 
         // PUT: api/Book/5
@@ -49,6 +62,7 @@ namespace LmsApi.Controllers
             {
                 await _context.SaveChangesAsync();
                 res = "Book details updated";
+                return new JsonResult(res);
             }
             catch (Exception ex)
             {
@@ -58,8 +72,6 @@ namespace LmsApi.Controllers
             {
                 logRecord.LogWriter(res);
             }
-
-            //return NoContent();
             return new JsonResult(res);
         }
 
@@ -67,6 +79,11 @@ namespace LmsApi.Controllers
         [HttpPost, Authorize(Roles = "admin")]
         public async Task<ActionResult<BookDetails>> PostBookDetails(BookDTO bookDto)
         {
+            var bookExists = _context.BookDetails.Any(x => x.BName == bookDto.BName && x.BAuthor == bookDto.BAuthor);
+            if (bookExists)
+            {
+                return new JsonResult("Book already exists");
+            }
             var bookDetails = new BookDetails
             {
                 BName = bookDto.BName,
@@ -77,9 +94,9 @@ namespace LmsApi.Controllers
             string res = string.Empty;
             try
             {
-                //var book = await _bookRepository.AddBook(bookDetails);
                 await _bookRepository.AddBook(bookDetails);
                 res = "Book added";
+                return new JsonResult(res);
             }
             catch (Exception ex)
             {

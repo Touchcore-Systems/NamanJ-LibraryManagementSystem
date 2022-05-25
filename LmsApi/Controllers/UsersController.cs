@@ -25,6 +25,12 @@ namespace LmsApi.Controllers
         [HttpPost, Route("register")]
         public async Task<ActionResult<Users>> PostUsers(UserDTO userDto)
         {
+            var userExists = _context.Users.Any(x => x.UName == userDto.UName);
+            if (userExists)
+            {
+                return new JsonResult("User already exists");
+            }
+
             var users = new Users
             {
                 UName = userDto.UName,
@@ -41,6 +47,7 @@ namespace LmsApi.Controllers
                     res = "User added";
                 }
                 else res = "Role must be Admin or Student";
+                return Ok(new JsonResult(res).Value);
             }
             catch (Exception ex)
             {

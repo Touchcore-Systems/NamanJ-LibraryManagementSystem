@@ -40,7 +40,7 @@ namespace LmsApi.Repositories
             IssueDetails details = _context.IssueDetails.Where(x => x.TId == id).FirstOrDefault();
             BookDetails bookDetails = _context.BookDetails.Where(x => x.BId == details.BId).FirstOrDefault();
 
-            if (bookDetails.BQuantity == 0)
+            if (bookDetails?.BQuantity == 0)
             {
                 return new JsonResult("Out of Stock!");
             }
@@ -54,7 +54,7 @@ namespace LmsApi.Repositories
             {
                 _context.Entry(details).State = EntityState.Modified;
                 _context.Entry(bookDetails).State = EntityState.Modified;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
