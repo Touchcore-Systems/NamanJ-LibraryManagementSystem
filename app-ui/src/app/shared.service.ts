@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatSnackBar } from '@angular/material/snack-bar';
-// handle asynchronous requests
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

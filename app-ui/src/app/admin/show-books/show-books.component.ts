@@ -54,6 +54,7 @@ export class ShowBooksAdminComponent implements OnInit {
   deleteClick(item: any) {
     if (confirm('Are you sure?')) {
       this.bookService.deleteBook(item.bId).subscribe(res => {
+        this.refreshBookList();
         this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");
       })
     }

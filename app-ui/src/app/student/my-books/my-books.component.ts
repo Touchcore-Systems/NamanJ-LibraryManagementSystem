@@ -28,7 +28,7 @@ export class MyBooksComponent implements OnInit {
   returnBook(item: any) {
     var diff = this.calculateDiff(item.DateOfSubmission);
     if (diff >= 1) {
-      var returnFine: any = returnFine * 10;
+      var returnFine: any = diff * 10;
     } else {
       returnFine = 0;
     }

@@ -14,7 +14,6 @@ export class AuthGuardService implements CanActivate {
   canActivate() {
     const token = localStorage.getItem('lms_authenticate');
 
-
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       return true;
     }
