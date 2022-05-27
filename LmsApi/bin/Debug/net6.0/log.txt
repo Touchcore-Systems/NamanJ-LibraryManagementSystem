@@ -1153,3 +1153,351 @@ Books fetched
 Log Entry : 8:08:44 PM
 Books fetched
 -------------------------------
+
+Log Entry : 7:52:33 AM
+User logged in and token generated
+-------------------------------
+
+Log Entry : 7:52:33 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:53:32 AM
+User added
+-------------------------------
+
+Log Entry : 7:53:46 AM
+User logged in and token generated
+-------------------------------
+
+Log Entry : 7:53:46 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:53:59 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:14 AM
+Book details updated
+-------------------------------
+
+Log Entry : 7:54:16 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:26 AM
+User logged in and token generated
+-------------------------------
+
+Log Entry : 7:54:26 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:31 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:32 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:33 AM
+Book with BId 24 requested
+-------------------------------
+
+Log Entry : 7:54:37 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:54:39 AM
+book approved
+-------------------------------
+
+Log Entry : 7:54:39 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:54:43 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:43 AM
+Book with BId 24 requested
+-------------------------------
+
+Log Entry : 7:54:47 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:48 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:54:56 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:57 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:58 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:59 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:54:59 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:55:23 AM
+Book approved
+-------------------------------
+
+Log Entry : 7:55:26 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:55:40 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:56:00 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:02 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:03 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:03 AM
+Book with BId 24 requested
+-------------------------------
+
+Log Entry : 7:56:07 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:56:12 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:56:17 AM
+book approved
+-------------------------------
+
+Log Entry : 7:56:17 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:56:21 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:56:29 AM
+Book approved
+-------------------------------
+
+Log Entry : 7:56:34 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:56:40 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:56:42 AM
+book approved
+-------------------------------
+
+Log Entry : 7:56:42 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:56:44 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:47 AM
+Book approved
+-------------------------------
+
+Log Entry : 7:56:49 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:56:54 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:56 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:56:58 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:56:59 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:57:00 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:57:03 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:57:20 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:58:24 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:58:26 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:58:28 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:59:21 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:59:31 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 7:59:32 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 7:59:33 AM
+Books fetched
+-------------------------------
+
+Log Entry : 7:59:59 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:00:25 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 8:00:27 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 8:00:36 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:00:40 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:00:40 AM
+Book with BId 22 requested
+-------------------------------
+
+Log Entry : 8:00:42 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 8:00:44 AM
+book approved
+-------------------------------
+
+Log Entry : 8:00:44 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 8:00:50 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 8:00:56 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:01:02 AM
+Book approved
+-------------------------------
+
+Log Entry : 8:01:05 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:01:09 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 8:01:10 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:01:16 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:01:33 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:01:35 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:01:54 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:02:03 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:02:09 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:02:16 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:02:19 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:02:20 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 8:02:21 AM
+Issue details fetched
+-------------------------------
+
+Log Entry : 8:02:22 AM
+Books fetched
+-------------------------------
+
+Log Entry : 8:02:54 AM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 8:02:55 AM
+Issue details fetched
+-------------------------------

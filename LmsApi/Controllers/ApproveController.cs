@@ -64,6 +64,10 @@ namespace LmsApi.Controllers
             {
                 res = ex.Message;
             }
+            finally
+            {
+                logRecord.LogWriter(res);
+            }
 
             return new JsonResult(res);
         }

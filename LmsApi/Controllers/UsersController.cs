@@ -47,7 +47,7 @@ namespace LmsApi.Controllers
                     res = "User added";
                 }
                 else res = "Role must be Admin or Student";
-                return Ok(new JsonResult(res).Value);
+                return new JsonResult(res);
             }
             catch (Exception ex)
             {

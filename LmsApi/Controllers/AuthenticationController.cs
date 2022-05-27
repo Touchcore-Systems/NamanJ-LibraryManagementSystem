@@ -66,6 +66,10 @@ namespace LmsApi.Controllers
             {
                 res = ex.Message;
             }
+            finally
+            {
+                logRecord.LogWriter(res);
+            }
 
             return Ok(new { Token = tokenString });
         }
