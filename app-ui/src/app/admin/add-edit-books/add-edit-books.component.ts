@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { bookDetails } from 'src/app/models/bookDetails';
 import { BookService } from '../../service/book.service';
 import { SharedService } from '../../shared.service';
 
@@ -24,10 +25,10 @@ export class AddEditBooksAdminComponent implements OnInit {
   }
 
   addBook() {
-    var details = {
+    var details: bookDetails = {
       bName: this.BookName,
       bAuthor: this.BookAuthor,
-      bQuantity: this.BookQuantity
+      bQuantity: parseInt(this.BookQuantity)
     };
 
     try {
@@ -46,7 +47,12 @@ export class AddEditBooksAdminComponent implements OnInit {
       this.service.SnackBarErrorMessage("Quantity must be more than 0");
     }
     else {
-      var details = { bId: this.BookId, bName: this.BookName, bAuthor: this.BookAuthor, bQuantity: this.BookQuantity };
+      var details: bookDetails = {
+        bId: parseInt(this.BookId),
+        bName: this.BookName,
+        bAuthor: this.BookAuthor,
+        bQuantity: parseInt(this.BookQuantity)
+      };
       try {
         this.bookService.updateBook(this.BookId, details).subscribe((res) => {
           this.service.SnackBarSuccessMessage(JSON.stringify(res));

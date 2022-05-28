@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { NgForm, Validators, FormBuilder } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { SharedService } from '../shared.service';
+import { users } from '../models/users';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent implements OnInit {
   invalidLogin: boolean = false;
   diffPass: boolean = false;
 
   constructor(private router: Router, private service: SharedService) { }
 
-
   ngOnInit(): void { }
 
   login(form: NgForm) {
-    const credentials = {
-      'uName': form.value.username,
-      'uPass': form.value.password,
-      'uRole': form.value.role
+    var credentials: users = {
+      uName: form.value.username,
+      uPass: form.value.password,
+      uRole: form.value.role
     }
 
     try {
@@ -48,10 +49,10 @@ export class LoginComponent implements OnInit {
 
   register(form: NgForm) {
     if (form.value.password == form.value.con_password) {
-      const details = {
-        'uName': form.value.username,
-        'uPass': form.value.password,
-        'uRole': 'student'
+      var details: users = {
+        uName: form.value.username,
+        uPass: form.value.password,
+        uRole: 'student'
       };
 
       try {

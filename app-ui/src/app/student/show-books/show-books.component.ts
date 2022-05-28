@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { issueDetails } from 'src/app/models/issueDetails';
 import { BookService } from '../../service/book.service';
 import { SharedService } from '../../shared.service';
 
@@ -33,10 +34,10 @@ export class ShowBooksStudentComponent implements OnInit {
     this.book = item;
 
     if (this.book.bQuantity >= 1) {
-      var details = {
+      var details: issueDetails = {
         uName: this.uName,
         bId: this.book.bId,
-        Status: 'pending'
+        status: 'pending'
       };
 
       try {

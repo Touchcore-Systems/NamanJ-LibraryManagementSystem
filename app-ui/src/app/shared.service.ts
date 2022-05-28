@@ -38,7 +38,7 @@ export class SharedService {
     this.SnackBar.open(message, "Dismiss", {
       duration: 3000,
       verticalPosition: 'top',
-      panelClass: ['text-success'],
+      panelClass: ['text-light'],
     });
   }
 
