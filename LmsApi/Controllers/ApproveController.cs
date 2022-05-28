@@ -14,7 +14,7 @@ namespace LmsApi.Controllers
         private readonly DataContext _context;
         private readonly IApproveRepository _approveRepository;
 
-        LogRecord logRecord = new();
+        LogRecordHelper logRecord = new();
 
         public ApproveController(DataContext context, IApproveRepository approveRepository)
         {
@@ -23,30 +23,23 @@ namespace LmsApi.Controllers
         }
 
         // GET: api/Approve
-        [HttpGet, Authorize(Roles = "admin, student")]
+        [HttpGet, Authorize(Roles = "admin")]
         public async Task<JsonResult> GetBooks()
         {
-            string res = String.Empty;
-
             try
             {
-                var books = await _approveRepository.GetBooksAsync();
-                res = "Books to approve fetched";
-                return books;
+                logRecord.LogWriter("Books to approve fetched");
+                return await _approveRepository.GetBooksAsync();
             }
             catch (Exception ex)
             {
-                res = ex.Message;
+                logRecord.LogWriter(ex.ToString());
+                return new JsonResult(ex.Message);
             }
-            finally
-            {
-                logRecord.LogWriter(res);
-            }
-            return new JsonResult(res);
         }
 
         // PUT: api/Approve/5
-        [HttpPut("{id}"), Authorize(Roles = "admin, student")]
+        [HttpPut("{id}"), Authorize(Roles = "admin")]
         public async Task<IActionResult> UpdateApproveStatus(int id, ApproveDTO approveDTO)
         {
             if (!TransactionDetailsExists(id))
@@ -54,22 +47,16 @@ namespace LmsApi.Controllers
                 return BadRequest();
             }
 
-            string res = String.Empty;
             try
             {
                 await _approveRepository.ApproveBookAsync(id, approveDTO);
-                res = "book approved";
+                return new JsonResult("Book approved");
             }
             catch (Exception ex)
             {
-                res = ex.Message;
+                logRecord.LogWriter(ex.ToString());
+                return new JsonResult(ex.Message);
             }
-            finally
-            {
-                logRecord.LogWriter(res);
-            }
-
-            return new JsonResult(res);
         }
 
         private bool TransactionDetailsExists(int id)

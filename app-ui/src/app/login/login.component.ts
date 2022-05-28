@@ -24,22 +24,26 @@ export class LoginComponent implements OnInit {
       'uRole': form.value.role
     }
 
-    this.service.loginUser(credentials).subscribe(
-      res => {
-        const token = (<any>res).token;
-        localStorage.setItem("lms_authenticate", token); // session storage can also be used
-        this.invalidLogin = false;
-        if (credentials.uRole == "admin") {
-          this.router.navigate(["admin/available-books"]);
-        } else {
-          this.router.navigate(["student/available-books"]);
+    try {
+      this.service.loginUser(credentials).subscribe(
+        res => {
+          const token = (<any>res).token;
+          localStorage.setItem("lms_authenticate", token); // session storage can also be used
+          this.invalidLogin = false;
+          if (credentials.uRole == "admin") {
+            this.router.navigate(["admin/available-books"]);
+          } else {
+            this.router.navigate(["student/available-books"]);
+          }
+          this.service.SnackBarSuccessMessage("Login Successful!");
+        }, err => {
+          this.invalidLogin = true;
+          this.service.SnackBarErrorMessage(JSON.stringify(err.message));
         }
-        this.service.SnackBarMessage("Login Successful!", "Dismiss");
-      }, err => {
-        this.invalidLogin = true;
-        this.service.SnackBarMessage(err.message, "Dismiss");
-      }
-    )
+      )
+    } catch (error: any) {
+      this.service.SnackBarErrorMessage(JSON.stringify(error.message));
+    }
   }
 
   register(form: NgForm) {
@@ -50,9 +54,15 @@ export class LoginComponent implements OnInit {
         'uRole': 'student'
       };
 
-      this.service.registerUser(details).subscribe((res: any) => {
-        this.service.SnackBarMessage(res.toString(), "Dismiss");
-      });
+      try {
+        this.service.registerUser(details).subscribe((res: any) => {
+          this.service.SnackBarSuccessMessage(res.toString());
+        }, err => {
+          this.service.SnackBarErrorMessage(JSON.stringify(err.message));
+        });
+      } catch (error: any) {
+        this.service.SnackBarErrorMessage(JSON.stringify(error));
+      }
     }
     else {
       this.diffPass = true;

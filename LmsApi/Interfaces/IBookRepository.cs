@@ -6,7 +6,7 @@ namespace LmsApi.Interfaces
     public interface IBookRepository
     {
         Task<IEnumerable<BookDetails>> GetBooksAsync();
-        Task<BookDetails> AddBook(BookDetails bookDetails);
+        Task<string> AddBook(BookDetails bookDetails);
         Task<string> DeleteBook(int id, BookDetails bookDetails);
     }
 }

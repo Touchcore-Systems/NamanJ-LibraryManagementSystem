@@ -26,39 +26,34 @@ export class MyBooksComponent implements OnInit {
   }
 
   returnBook(item: any) {
-    var diff = this.calculateDiff(item.DateOfSubmission);
-    if (diff >= 1) {
-      var returnFine: any = diff * 10;
-    } else {
-      returnFine = 0;
+    var details = {
     }
 
-    var details = {
-      DateOfReturn: new Date(),
-      fine: returnFine
-    };
-
-    this.bookService.updateReturnStatus(item.tId, details).subscribe((res) => {
-      this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");
-      this.refreshStudentBooks();
-    });
-  }
-
-  calculateDiff(data: any) {
-    let date = new Date(data);
-    let currentDate = new Date();
-
-    let days = Math.floor((currentDate.getTime() - date.getTime()) / 1000 / 60 / 60 / 24);
-    return days;
+    try {
+      this.bookService.updateReturnStatus(item.tId, details).subscribe((res) => {
+        this.service.SnackBarSuccessMessage(JSON.stringify(res));
+        this.refreshStudentBooks();
+      }, err => {
+        this.service.SnackBarErrorMessage(JSON.stringify(err.message));
+      });
+    } catch (error: any) {
+      this.service.SnackBarErrorMessage(JSON.stringify(error.message));
+    }
   }
 
   refreshStudentBooks() {
-    this.bookService.getStudentBooks().subscribe((data) => {
-      data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
-      this.StudentBooks = new MatTableDataSource(data);
-      this.StudentBooks.paginator = this.paginator;
-      this.StudentBooks.sort = this.matSort;
-    });
+    try {
+      this.bookService.getStudentBooks().subscribe((data) => {
+        data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
+        this.StudentBooks = new MatTableDataSource(data);
+        this.StudentBooks.paginator = this.paginator;
+        this.StudentBooks.sort = this.matSort;
+      }, err => {
+        this.service.SnackBarErrorMessage(JSON.stringify(err.message));
+      });
+    } catch (error: any) {
+      this.service.SnackBarErrorMessage(JSON.stringify(error.message));
+    }
   }
 
   filterData($event: any) {

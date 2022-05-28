@@ -14,7 +14,7 @@ namespace LmsApi.Controllers
         private readonly DataContext _context;
         private readonly IUserRepository _userRepository;
 
-        LogRecord logRecord = new();
+        LogRecordHelper logRecord = new();
         public UsersController(DataContext context, IUserRepository userRepository)
         {
             _context = context;
@@ -23,41 +23,36 @@ namespace LmsApi.Controllers
 
         // POST: api/Users
         [HttpPost, Route("register")]
-        public async Task<ActionResult<Users>> PostUsers(UserDTO userDto)
+        public async Task<IActionResult> PostUsers(UserDTO userDto)
         {
-            var userExists = _context.Users.Any(x => x.UName == userDto.UName);
-            if (userExists)
-            {
-                return new JsonResult("User already exists");
-            }
-
-            var users = new Users
-            {
-                UName = userDto.UName,
-                UPass = HashPass.hashPass(userDto.UPass),
-                URole = userDto.URole
-            };
-
-            string res = String.Empty;
             try
             {
+                var userExists = _context.Users.Any(x => x.UName == userDto.UName);
+
+                if (userExists)
+                {
+                    return new JsonResult("User already exists");
+                }
+
+                var users = new Users
+                {
+                    UName = userDto.UName,
+                    UPass = HashPassHelper.hashPass(userDto.UPass),
+                    URole = userDto.URole
+                };
+
                 if (users.URole == "admin" || users.URole == "student")
                 {
                     await _userRepository.AddStudent(users);
-                    res = "User added";
+                    return new JsonResult("User added");
                 }
-                else res = "Role must be Admin or Student";
-                return new JsonResult(res);
+                else return new JsonResult("Role must be Admin or Student");
             }
             catch (Exception ex)
             {
-                res = ex.Message;
+                logRecord.LogWriter(ex.ToString());
+                return new JsonResult(ex.Message);
             }
-            finally
-            {
-                logRecord.LogWriter(res);
-            }
-            return new JsonResult(res);
         }
     }
 }

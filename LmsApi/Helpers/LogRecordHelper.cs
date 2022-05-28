@@ -2,7 +2,7 @@
 
 namespace LmsApi.Helpers
 {
-    public class LogRecord
+    public class LogRecordHelper
     {
         private string path = string.Empty;
         public void LogWriter(string logMessage)

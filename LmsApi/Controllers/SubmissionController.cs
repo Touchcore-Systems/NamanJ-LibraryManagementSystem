@@ -14,7 +14,7 @@ namespace LmsApi.Controllers
         private readonly DataContext _context;
         private readonly ISubmissionRepository _submissionRepository;
 
-        LogRecord logRecord = new();
+        LogRecordHelper logRecord = new();
 
         public SubmissionController(DataContext context, ISubmissionRepository submissionRepository)
         {
@@ -24,10 +24,18 @@ namespace LmsApi.Controllers
 
         // GET: api/Submission
         [HttpGet, Authorize(Roles = "admin, student")]
-        public async Task<JsonResult> GetStudentBooks()
+        public async Task<IActionResult> GetStudentBooks()
         {
-            var books = await _submissionRepository.GetBooksAsync(User.Identity.Name);
-            return books;
+            try
+            {
+                logRecord.LogWriter("Books issued to a student fetched");
+                return await _submissionRepository.GetBooksAsync(User.Identity.Name);
+            }
+            catch (Exception ex)
+            {
+                logRecord.LogWriter(ex.ToString());
+                return NotFound(ex.Message);
+            }
         }
 
         // PUT: api/Submission/5
@@ -39,22 +47,16 @@ namespace LmsApi.Controllers
                 return BadRequest();
             }
 
-            string res = string.Empty;
             try
             {
                 await _submissionRepository.SubmitBookAsync(id, submissionDTO);
-                res = "Book approved";
+                return new JsonResult("Book submitted");
             }
             catch (Exception ex)
             {
-                res = ex.Message;
+                logRecord.LogWriter(ex.ToString());
+                return BadRequest(ex.Message);
             }
-            finally
-            {
-                logRecord.LogWriter(res);
-            }
-
-            return new JsonResult(res);
         }
         private bool TransactionDetailsExists(int id)
         {

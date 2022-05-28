@@ -1,5 +1,6 @@
 ﻿using LmsApi.Data;
 using LmsApi.DTO;
+using LmsApi.Helpers;
 using LmsApi.Interfaces;
 using LmsApi.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,14 +11,20 @@ namespace LmsApi.Repositories
     public class SubmissionRepository : ISubmissionRepository
     {
         private readonly DataContext _context;
-        public SubmissionRepository(DataContext context)
+        private readonly IConfiguration _configuration;
+
+        LogRecordHelper logRecord = new();
+        public SubmissionRepository(DataContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
         public async Task<JsonResult> GetBooksAsync(string uName)
         {
-            var issueDetails = await _context.BookDetails
-                .Join(
+            try
+            {
+                var issueDetails = await _context.BookDetails
+                    .Join(
                         _context.IssueDetails.Where(x => x.UName == uName && x.Status == "approved"),
                         book => book.BId,
                         issue => issue.BId,
@@ -29,30 +36,42 @@ namespace LmsApi.Repositories
                             DateOfSubmission = issue.DateofSubmission
                         }
                     ).ToListAsync();
-            return new JsonResult(issueDetails);
-        }
-        public async Task<JsonResult> SubmitBookAsync(int id, SubmissionDTO submissionDTO)
-        {
-            IssueDetails details = _context.IssueDetails.Where(x => x.TId == id).FirstOrDefault();
-            BookDetails bookDetails = _context.BookDetails.Where(x => x.BId == details.BId).FirstOrDefault();
-
-            details.Status = submissionDTO.Status;
-            details.DateOfReturn = TimeZoneInfo.ConvertTimeFromUtc(submissionDTO.DateOfReturn, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
-            details.Fine = submissionDTO.Fine;
-            bookDetails.BQuantity += 1;
-
-            try
-            {
-                _context.Entry(details).State = EntityState.Modified;
-                _context.Entry(bookDetails).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
+                return new JsonResult(issueDetails);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                logRecord.LogWriter(ex.ToString());
+                return new JsonResult(ex.Message);
             }
 
-            return new JsonResult("Updated");
+        }
+        public async Task<string> SubmitBookAsync(int id, SubmissionDTO submissionDTO)
+        {
+            try
+            {
+                IssueDetails details = _context.IssueDetails.Where(x => x.TId == id).FirstOrDefault();
+                BookDetails bookDetails = _context.BookDetails.Where(x => x.BId == details.BId).FirstOrDefault();
+
+                details.Status = submissionDTO.Status;
+                details.DateOfReturn = submissionDTO.DateOfReturn;
+
+                //calculating days b/w DateOfIssue and DateOfReturn
+                var days = (details.DateOfReturn.Value.Date - details.DateOfIssue.Value.Date).TotalDays;
+                _ = days > Int32.Parse(_configuration["AllowedDays"])
+                        ? details.Fine = Int32.Parse(_configuration["FineAmount"]) * ((int)days - Int32.Parse(_configuration["AllowedDays"]))
+                        : details.Fine = 0;
+                bookDetails.BQuantity += 1;
+
+                _context.Entry(details).State = EntityState.Modified;
+                _context.Entry(bookDetails).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return "Book submitted";
+            }
+            catch (Exception ex)
+            {
+                logRecord.LogWriter(ex.ToString());
+                return ex.Message;
+            }
         }
     }
 }

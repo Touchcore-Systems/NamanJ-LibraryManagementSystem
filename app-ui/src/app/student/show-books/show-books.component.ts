@@ -10,6 +10,7 @@ import { SharedService } from '../../shared.service';
   templateUrl: './show-books.component.html',
   styleUrls: ['./show-books.component.css']
 })
+
 export class ShowBooksStudentComponent implements OnInit {
 
   @ViewChild('paginator') paginator!: MatPaginator;
@@ -38,22 +39,34 @@ export class ShowBooksStudentComponent implements OnInit {
         Status: 'pending'
       };
 
-      this.bookService.requestBook(details).subscribe((res) => {
-        this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");
-      });
+      try {
+        this.bookService.requestBook(details).subscribe((res) => {
+          this.service.SnackBarSuccessMessage(JSON.stringify(res));
+        }, err => {
+          this.service.SnackBarErrorMessage(JSON.stringify(err.message));
+        });
+      } catch (error: any) {
+        this.service.SnackBarErrorMessage(JSON.stringify(error));
+      }
     } else {
-      this.service.SnackBarMessage("Out of stock!", "Dismiss")
+      this.service.SnackBarErrorMessage("Out of stock!")
     }
     this.refreshBookList();
   }
 
   refreshBookList() {
-    this.bookService.getBookList().subscribe((data) => {
-      data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
-      this.BookList = new MatTableDataSource(data);
-      this.BookList.paginator = this.paginator;
-      this.BookList.sort = this.matSort;
-    });
+    try {
+      this.bookService.getBookList().subscribe((data) => {
+        data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
+        this.BookList = new MatTableDataSource(data);
+        this.BookList.paginator = this.paginator;
+        this.BookList.sort = this.matSort;
+      }, err => {
+        this.service.SnackBarErrorMessage(JSON.stringify(err.message));
+      });
+    } catch (error: any) {
+      this.service.SnackBarErrorMessage(JSON.stringify(error));
+    }
   }
 
   filterData($event: any) {

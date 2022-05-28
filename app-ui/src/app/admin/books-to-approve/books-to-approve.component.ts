@@ -26,24 +26,36 @@ export class BooksToApproveComponent implements OnInit {
   isEmpty = false;
 
   approveBook(item: any) {
-    var approveStatus = { Status: item.Status}
+    var approveStatus = { Status: item.Status }
     if (item.bQuantity >= 1) {
-      this.bookService.updateApproveStatus(item.tId, approveStatus).subscribe((res) => {
-        this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");
-        this.refreshToApproveList();
-      });
+      try {
+        this.bookService.updateApproveStatus(item.tId, approveStatus).subscribe((res) => {
+          this.service.SnackBarSuccessMessage(JSON.stringify(res));
+          this.refreshToApproveList();
+        }, err => {
+          this.service.SnackBarErrorMessage(JSON.stringify(err.message));
+        });
+      } catch (error: any) {
+        this.service.SnackBarErrorMessage(JSON.stringify(error));
+      }
     } else {
-      this.service.SnackBarMessage("Out of stock!", "Dismiss");
+      this.service.SnackBarErrorMessage("Out of stock!");
     }
   }
 
   refreshToApproveList() {
-    this.bookService.getBooksToApprove().subscribe((data) => {
-      data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
-      this.ApproveList = new MatTableDataSource(data);
-      this.ApproveList.paginator = this.paginator;
-      this.ApproveList.sort = this.matSort;
-    });
+    try {
+      this.bookService.getBooksToApprove().subscribe((data) => {
+        data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
+        this.ApproveList = new MatTableDataSource(data);
+        this.ApproveList.paginator = this.paginator;
+        this.ApproveList.sort = this.matSort;
+      }, err => {
+        this.service.SnackBarErrorMessage(JSON.stringify(err.message));
+      });
+    } catch (error: any) {
+      this.service.SnackBarErrorMessage(JSON.stringify(error));
+    }
   }
 
   filterData($event: any) {

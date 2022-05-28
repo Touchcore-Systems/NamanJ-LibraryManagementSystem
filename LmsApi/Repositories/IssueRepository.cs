@@ -10,6 +10,9 @@ namespace LmsApi.Repositories
     public class IssueRepository : IIssueRepository
     {
         private readonly DataContext _context;
+
+        LogRecordHelper logRecord = new();
+
         public IssueRepository(DataContext context)
         {
             _context = context;
@@ -17,8 +20,10 @@ namespace LmsApi.Repositories
 
         public async Task<JsonResult> GetIssueDetailsAsync()
         {
-            var issueDetails = await _context.BookDetails
-                .Join(
+            try
+            {
+                var issueDetails = await _context.BookDetails
+                    .Join(
                         _context.IssueDetails,
                         book => book.BId,
                         issue => issue.BId,
@@ -35,7 +40,13 @@ namespace LmsApi.Repositories
                             Fine = issue.Fine
                         }
                     ).ToListAsync();
-            return new JsonResult(issueDetails);
+                return new JsonResult(issueDetails);
+            }
+            catch (Exception ex)
+            {
+                logRecord.LogWriter(ex.ToString());
+                return new JsonResult(ex.Message);
+            }
         }
 
         public async Task<IssueDetails> IssueBook(IssueDetails issueBook)
@@ -47,10 +58,8 @@ namespace LmsApi.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                logRecord.LogWriter(ex.ToString());
             }
-
-            Console.WriteLine(issueBook);
             return issueBook;
         }
     }

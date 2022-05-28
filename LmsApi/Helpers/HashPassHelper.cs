@@ -3,7 +3,7 @@ using Tweetinvi.Security;
 
 namespace LmsApi
 {
-    public class HashPass
+    public class HashPassHelper
     {
         public static string hashPass(string pass)
         {

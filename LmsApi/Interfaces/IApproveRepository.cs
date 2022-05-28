@@ -1,5 +1,4 @@
 ﻿using LmsApi.DTO;
-using LmsApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LmsApi.Interfaces

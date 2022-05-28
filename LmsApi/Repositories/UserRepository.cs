@@ -1,13 +1,15 @@
 ﻿using LmsApi.Data;
+using LmsApi.Helpers;
 using LmsApi.Interfaces;
 using LmsApi.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace LmsApi.Repositories
 {
     public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
+
+        LogRecordHelper logRecord = new();
         public UserRepository(DataContext context)
         {
             _context = context;
@@ -18,10 +20,11 @@ namespace LmsApi.Repositories
             {
                 await _context.Users.AddAsync(users);
                 await _context.SaveChangesAsync();
+                logRecord.LogWriter("User added");
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                logRecord.LogWriter(ex.ToString());
             }
             return users;
         }

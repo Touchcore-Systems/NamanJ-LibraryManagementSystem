@@ -9,6 +9,7 @@ namespace LmsApi.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TId { get; set; }
         public string? UName { get; set; }
+        [ForeignKey("BookDetails")]
         public int? BId { get; set; }
         public string? Status { get; set; }
         public DateTime? DateOfIssue { get; set; }

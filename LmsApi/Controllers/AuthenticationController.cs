@@ -15,63 +15,65 @@ namespace LmsApi.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IConfiguration _configuration;
 
-        LogRecord logRecord = new();
+        LogRecordHelper logRecord = new();
 
-        public AuthenticationController(DataContext context)
+        public AuthenticationController(DataContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
+
         [HttpPost("login")]
-        public async Task<ActionResult<LoginDTO>> Login(LoginDTO loginDto)
+        public async Task<IActionResult> Login(LoginDTO loginDto)
         {
-            string res = string.Empty;
-            var user = await _context.Users.SingleOrDefaultAsync(
-                x => x.UName == loginDto.UName
-                && x.UPass == HashPass.hashPass(loginDto.UPass)
-                && x.URole == loginDto.URole
-            );
+            string tokenString = string.Empty;
+            SymmetricSecurityKey secretKey;
+            SigningCredentials signinCredentials;
+            List<Claim> claims = new();
+            JwtSecurityToken tokenOptions;
 
-            if (user == null)
+            try
             {
-                res = "User unauthenticated";
-                logRecord.LogWriter(res);
-                return NotFound();
-            }
+                var user = await _context.Users.SingleOrDefaultAsync(
+                x => x.UName == loginDto.UName
+                && x.UPass == HashPassHelper.hashPass(loginDto.UPass)
+                && x.URole == loginDto.URole
+                );
 
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Secret Key @ 321 #"));
-            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+                if (user == null)
+                {
+                    logRecord.LogWriter("Invalid login attempt");
+                    return NotFound();
+                }
 
-            var claims = new List<Claim>
+                secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SecretKey"]));
+                signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+                claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, loginDto.UName),
                         new Claim(ClaimTypes.Role, loginDto.URole)
                     };
 
-            var tokenOptions = new JwtSecurityToken(
-                issuer: "http://localhost:7298",
-                audience: "http://localhost:7298",
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(60),
-                signingCredentials: signinCredentials
-            );
+                tokenOptions = new JwtSecurityToken(
+                    issuer: _configuration["TokenUrl"],
+                    audience: _configuration["TokenUrl"],
+                    claims: claims,
+                    expires: DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["TokenExpiration"])),
+                    signingCredentials: signinCredentials
+                );
 
-            string tokenString = string.Empty;
-            try
-            {
                 tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-                res = "User logged in and token generated";
+                logRecord.LogWriter("User logged in and token generated");
+                return Ok(new { Token = tokenString });
             }
             catch (Exception ex)
             {
-                res = ex.Message;
+                logRecord.LogWriter(ex.ToString());
+                return BadRequest(ex.Message);
             }
-            finally
-            {
-                logRecord.LogWriter(res);
-            }
-
-            return Ok(new { Token = tokenString });
         }
     }
 }

@@ -26,12 +26,18 @@ export class IssueDetailsComponent implements OnInit {
   isEmpty = false;
 
   refreshIssueList() {
-    this.bookService.getIssueDetails().subscribe((data) => {
-      data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
-      this.IssueList = new MatTableDataSource(data);
-      this.IssueList.paginator = this.paginator;
-      this.IssueList.sort = this.matSort;
-    });
+    try {
+      this.bookService.getIssueDetails().subscribe((data) => {
+        data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
+        this.IssueList = new MatTableDataSource(data);
+        this.IssueList.paginator = this.paginator;
+        this.IssueList.sort = this.matSort;
+      }, err => {
+        this.service.SnackBarErrorMessage(JSON.stringify(err.message));
+      });
+    } catch (error: any) {
+      this.service.SnackBarErrorMessage(JSON.stringify(error));
+    }
   }
 
   filterData($event: any) {

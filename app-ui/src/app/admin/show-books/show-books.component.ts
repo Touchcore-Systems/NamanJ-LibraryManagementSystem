@@ -53,20 +53,32 @@ export class ShowBooksAdminComponent implements OnInit {
 
   deleteClick(item: any) {
     if (confirm('Are you sure?')) {
-      this.bookService.deleteBook(item.bId).subscribe(res => {
-        this.refreshBookList();
-        this.service.SnackBarMessage(JSON.stringify(res), "Dismiss");
-      })
+      try {
+        this.bookService.deleteBook(item.bId).subscribe(res => {
+          this.refreshBookList();
+          this.service.SnackBarSuccessMessage(JSON.stringify(res));
+        }, err => {
+          this.service.SnackBarErrorMessage(JSON.stringify(err.message));
+        });
+      } catch (error: any) {
+        this.service.SnackBarErrorMessage(JSON.stringify(error));
+      }
     }
   }
 
   refreshBookList() {
-    this.bookService.getBookList().subscribe((data) => {
-      data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
-      this.BookList = new MatTableDataSource(data);
-      this.BookList.paginator = this.paginator;
-      this.BookList.sort = this.matSort;
-    });
+    try {
+      this.bookService.getBookList().subscribe((data) => {
+        data.length == 0 ? this.isEmpty = true : this.isEmpty = false;
+        this.BookList = new MatTableDataSource(data);
+        this.BookList.paginator = this.paginator;
+        this.BookList.sort = this.matSort;
+      }, err => {
+        this.service.SnackBarErrorMessage(JSON.stringify(err.message));
+      });
+    } catch (error: any) {
+      this.service.SnackBarErrorMessage(JSON.stringify(error));
+    }
   }
 
   filterData($event: any) {

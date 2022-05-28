@@ -10,6 +10,6 @@ namespace LmsApi.Models
         public int UId { get; set; }
         public string UName { get; set; }  
         public string URole { get; set; }
-        public string? UPass { get; set; }
+        public string UPass { get; set; }
     }
 }

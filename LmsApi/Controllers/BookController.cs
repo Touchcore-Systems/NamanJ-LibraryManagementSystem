@@ -17,7 +17,7 @@ namespace LmsApi.Controllers
         private readonly DataContext _context;
         private readonly IBookRepository _bookRepository;
 
-        LogRecord logRecord = new();
+        LogRecordHelper logRecord = new();
         public BookController(DataContext context, IBookRepository bookRepository)
         {
             _context = context;
@@ -28,22 +28,17 @@ namespace LmsApi.Controllers
         [HttpGet, Authorize(Roles = "admin, student")]
         public async Task<ActionResult<IEnumerable<BookDetails>>> GetBooks()
         {
-            string res = string.Empty;
             try
             {
                 var books = await _bookRepository.GetBooksAsync();
-                res = "Books fetched";
+                logRecord.LogWriter("Books fetched");
                 return Ok(books);
             }
             catch (Exception ex)
             {
-                res = ex.Message;
+                logRecord.LogWriter(ex.ToString());
+                return BadRequest(ex.Message);
             }
-            finally
-            {
-                logRecord.LogWriter(res);
-            }
-            return BadRequest(res);
         }
 
         // PUT: api/Book/5
@@ -55,58 +50,47 @@ namespace LmsApi.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(bookDetails).State = EntityState.Modified;
-
-            string res = string.Empty;
             try
             {
+                _context.Entry(bookDetails).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
-                res = "Book details updated";
-                return new JsonResult(res);
+                return new JsonResult("Book details updated");
             }
             catch (Exception ex)
             {
-                res = ex.Message;
+                logRecord.LogWriter(ex.ToString());
+                return new JsonResult(ex.Message);
             }
-            finally
-            {
-                logRecord.LogWriter(res);
-            }
-            return new JsonResult(res);
         }
 
         // POST: api/Book
         [HttpPost, Authorize(Roles = "admin")]
         public async Task<ActionResult<BookDetails>> PostBookDetails(BookDTO bookDto)
         {
-            var bookExists = _context.BookDetails.Any(x => x.BName == bookDto.BName && x.BAuthor == bookDto.BAuthor);
-            if (bookExists)
-            {
-                return new JsonResult("Book already exists");
-            }
-            var bookDetails = new BookDetails
-            {
-                BName = bookDto.BName,
-                BAuthor = bookDto.BAuthor,
-                BQuantity = bookDto.BQuantity
-            };
-
-            string res = string.Empty;
             try
             {
+                var bookExists = _context.BookDetails.Any(x => x.BName == bookDto.BName && x.BAuthor == bookDto.BAuthor);
+
+                if (bookExists)
+                {
+                    return new JsonResult("Book already exists");
+                }
+
+                var bookDetails = new BookDetails
+                {
+                    BName = bookDto.BName,
+                    BAuthor = bookDto.BAuthor,
+                    BQuantity = bookDto.BQuantity
+                };
+
                 await _bookRepository.AddBook(bookDetails);
-                res = "Book added";
-                return new JsonResult(res);
+                return new JsonResult("Book added");
             }
             catch (Exception ex)
             {
-                res = ex.Message;
+                logRecord.LogWriter(ex.ToString());
+                return new JsonResult(ex.Message);
             }
-            finally
-            {
-                logRecord.LogWriter(res);
-            }
-            return new JsonResult(res);
         }
 
         // DELETE: api/Book/5
@@ -114,33 +98,21 @@ namespace LmsApi.Controllers
         public async Task<IActionResult> DeleteBookDetails(int id)
         {
             var bookDetails = await _context.BookDetails.FindAsync(id);
+
             if (bookDetails == null)
             {
                 return NotFound();
             }
 
-            var res = string.Empty;
             try
             {
-                res = await _bookRepository.DeleteBook(id, bookDetails);
+                return new JsonResult(await _bookRepository.DeleteBook(id, bookDetails));
             }
             catch (Exception ex)
             {
-                res = ex.Message;
+                logRecord.LogWriter(ex.ToString());
+                return new JsonResult(ex.Message);
             }
-            finally
-            {
-                logRecord.LogWriter(res);
-            }
-
-            return new JsonResult(res);
         }
-
-        /*
-        private bool BookDetailsExists(int id)
-        {
-            return _context.BookDetails.Any(e => e.BId == id);
-        }
-        */
     }
 }

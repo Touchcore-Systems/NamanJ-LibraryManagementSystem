@@ -11,7 +11,6 @@ var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -24,18 +23,25 @@ builder.Services.AddAuthentication(x =>
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(x =>
 {
-    x.TokenValidationParameters = new TokenValidationParameters
+    try
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
+        x.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
 
-        ValidIssuer = "http://localhost:7298",
-        ValidAudience = "http://localhost:7298",
+            ValidIssuer = "http://localhost:7298",
+            ValidAudience = "http://localhost:7298",
 
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("Secret Key @ 321 #"))
-    };
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("Secret Key @ 321 #"))
+        };
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex);
+    }
 });
 
 builder.Services.AddDbContext<DataContext>(options =>

@@ -34,10 +34,19 @@ export class SharedService {
     localStorage.removeItem("lms_authenticate");
   }
 
-  SnackBarMessage(message: string, action: string) {
-    this.SnackBar.open(message, action, {
+  SnackBarSuccessMessage(message: string) {
+    this.SnackBar.open(message, "Dismiss", {
       duration: 3000,
-      verticalPosition: 'top'
+      verticalPosition: 'top',
+      panelClass: ['text-success'],
+    });
+  }
+
+  SnackBarErrorMessage(message: string) {
+    this.SnackBar.open(message, "Dismiss", {
+      duration: 3000,
+      verticalPosition: 'top',
+      panelClass: ['text-danger'],
     });
   }
 }
