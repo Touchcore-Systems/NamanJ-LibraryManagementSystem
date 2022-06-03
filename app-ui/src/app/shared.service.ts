@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { users } from './models/users';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,11 +14,11 @@ export class SharedService {
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private SnackBar: MatSnackBar) { }
 
-  loginUser(credentials: any) {
+  loginUser(credentials: users) {
     return this.http.post(this.APIUrl + '/Authentication/login', credentials);
   }
 
-  registerUser(details: any) {
+  registerUser(details: users) {
     return this.http.post(this.APIUrl + '/Users/register', details);
   }
 

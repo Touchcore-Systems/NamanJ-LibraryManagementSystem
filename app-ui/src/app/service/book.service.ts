@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+
+import { bookDetails } from '../models/bookDetails';
+import { issueDetails } from '../models/issueDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -9,45 +11,45 @@ import { Observable } from 'rxjs';
 export class BookService {
   readonly APIUrl = 'https://localhost:7298/api';
 
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
+  constructor(private http: HttpClient) { }
 
-  getBookList(): Observable<any[]> {
+  getBookList(): Observable<bookDetails[]> {
     return this.http.get<any>(this.APIUrl + '/Book');
   }
 
-  addBook(details: any) {
+  addBook(details: bookDetails) {
     return this.http.post(this.APIUrl + '/Book', details);
   }
 
-  updateBook(id: any, details: any) {
+  updateBook(id: number, details: bookDetails) {
     return this.http.put(this.APIUrl + `/Book/${id}`, details);
   }
 
-  deleteBook(id: any) {
+  deleteBook(id: number) {
     return this.http.delete(this.APIUrl + `/Book/${id}`);
   }
 
-  requestBook(details: any){
+  requestBook(details: issueDetails) {
     return this.http.post(this.APIUrl + '/Issue/request', details);
   }
 
-  updateApproveStatus(id: any, details: any){
+  updateApproveStatus(id: number, details: issueDetails) {
     return this.http.put(this.APIUrl + `/Approve/${id}`, details);
   }
 
-  getBooksToApprove(): Observable<any[]>{
+  getBooksToApprove(): Observable<issueDetails[]> {
     return this.http.get<any>(this.APIUrl + '/Approve');
   }
 
-  getIssueDetails(): Observable<any[]>{
+  getIssueDetails(): Observable<issueDetails[]> {
     return this.http.get<any>(this.APIUrl + '/Issue');
   }
 
-  getStudentBooks(): Observable<any[]>{
+  getStudentBooks(): Observable<issueDetails[]> {
     return this.http.get<any>(this.APIUrl + '/Submission');
   }
 
-  updateReturnStatus(id: any, details: any){
+  updateReturnStatus(id: number, details: issueDetails) {
     return this.http.put(this.APIUrl + `/Submission/${id}`, details);
   }
 }

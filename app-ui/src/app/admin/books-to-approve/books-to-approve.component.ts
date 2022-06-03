@@ -26,7 +26,7 @@ export class BooksToApproveComponent implements OnInit {
   isEmpty = false;
 
   approveBook(item: any) {
-    var approveStatus = { Status: item.Status }
+    var approveStatus = { status: item.Status }
     if (item.bQuantity >= 1) {
       try {
         this.bookService.updateApproveStatus(item.tId, approveStatus).subscribe((res) => {

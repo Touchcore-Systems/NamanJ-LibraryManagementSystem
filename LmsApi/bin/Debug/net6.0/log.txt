@@ -858,3 +858,131 @@ Books issued to a student fetched
 Log Entry : 10:21:00 PM
 Issue details fetched
 -------------------------------
+
+Log Entry : 11:19:26 PM
+User logged in and token generated
+-------------------------------
+
+Log Entry : 11:19:26 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:11:40 PM
+User logged in and token generated
+-------------------------------
+
+Log Entry : 1:11:40 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:11:49 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:11:51 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:11:54 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:11:55 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:11:56 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:11:58 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:12:52 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:12:58 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:13:15 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:13:36 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:13:48 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:13:52 PM
+Books to approve fetched
+-------------------------------
+
+Log Entry : 1:13:55 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:14:05 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:14:10 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:14:57 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:15:12 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:15:26 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:15:37 PM
+Issue details fetched
+-------------------------------
+
+Log Entry : 1:15:45 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:15:53 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:16:14 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:16:18 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:21:28 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:21:35 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:21:45 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:23:26 PM
+Books fetched
+-------------------------------
+
+Log Entry : 1:23:30 PM
+Books fetched
+-------------------------------

@@ -6,5 +6,5 @@ export interface issueDetails {
     dateOfIssue?: Date,
     dateOfSubmission?: Date,
     dateOfReturn?: Date,
-    Fine?: number
+    fine?: number
 }

@@ -54,7 +54,7 @@ export class AddEditBooksAdminComponent implements OnInit {
         bQuantity: parseInt(this.BookQuantity)
       };
       try {
-        this.bookService.updateBook(this.BookId, details).subscribe((res) => {
+        this.bookService.updateBook(parseInt(this.BookId), details).subscribe((res) => {
           this.service.SnackBarSuccessMessage(JSON.stringify(res));
         }, err => {
           this.service.SnackBarErrorMessage(JSON.stringify(err.message));

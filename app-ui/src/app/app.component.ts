@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedService } from './shared.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SharedService } from './shared.service';
 export class AppComponent {
 
   u_role: any = "";
-  constructor(private service: SharedService) { }
+  constructor(private router: Router, private service: SharedService) { }
 
   ngOnInit(): void {
     this.isAuthenticated()
