@@ -7,6 +7,7 @@
  - ASP.NET Identity Core
  - Entity Framework Core
  - Angular
+ - Azure Functions
 
 ## Installation
 
