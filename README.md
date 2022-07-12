@@ -2,7 +2,7 @@
  > Library Management System - Assessment project made in .NET core and Angular
  
 ## Technologies implemented
- - ASP.NET 5.0 (with .NET Core 5.0)
+ - ASP.NET 6.0 (with .NET Core 6.0)
  - ASP.NET WebApi Core with JWT Bearer Authentication
  - ASP.NET Identity Core
  - Entity Framework Core
